@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- sample data -->
+
+
+    <string-array name="img_id_array">
+        <item>@drawable/cover01</item>
+        <item>@drawable/cover02</item>
+        <item>@drawable/cover03</item>
+        <item>@drawable/cover04</item>
+        <item>@drawable/cover05</item>
+        <item>@drawable/cover06</item>
+        <item>@drawable/cover07</item>
+        <item>@drawable/cover08</item>
+        <item>@drawable/cover09</item>
+
+    </string-array>
+
+    <string-array name="img_title_array">
+        <item>別生氣，這就是人性！：你非懂不可的54個心理學法則</item>
+        <item>今天學心理學了沒？</item>
+        <item>英語點心</item>
+        <item>生命中的美好缺憾</item>
+        <item>小錢買股101招就賺夠</item>
+        <item>健康，不是數字說了算</item>
+        <item>自由幻夢（飢餓遊戲3)</item>
+        <item>第一次做 MOCHI</item>
+        <item>搭訕聖經</item>
+    </string-array>
+
+    <string-array name="img_author_array">
+        <item>陳鈺</item>
+        <item>林肇賢</item>
+        <item>曾淑貞</item>
+        <item>邱健恩</item>
+        <item>約翰・葛林</item>
+        <item>高俊權</item>
+        <item>陳俊旭</item>
+        <item>蘇珊·柯林斯</item>
+        <item>方芍堯</item>
+        <item>鄭匡宇</item>
+    </string-array>
+
+
+    };
+</resources>
