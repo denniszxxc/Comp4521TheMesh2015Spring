@@ -147,11 +147,12 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
         final FragmentTransaction ft = getFragmentManager().beginTransaction();
-        ft.replace(R.id.container, BookDetailFragment.newInstance(imgs.getResourceId(position, -1), imgText[position], imgAuthor[position]));
+        ft.replace(R.id.container, BookDetailFragment.newInstance(imgs.getResourceId(position, -1),
+                imgText[position], imgAuthor[position], mtitle));
         ft.addToBackStack(null);
         ft.commit();
-        ((MainActivity) mListener).onSectionAttached(getString(R.string.title_activity_book_details));
     }
 
 

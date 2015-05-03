@@ -62,6 +62,11 @@ public class MainActivity extends ActionBarActivity
                         .replace(R.id.container, BookGridFragment.newInstance(getString(R.string.title_section1)))
                         .commit();
                 break;
+            case 1:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, BookGridFragment.newInstance(getString(R.string.title_section2)))
+                        .commit();
+                break;
             default:
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, PlaceholderFragment.newInstance(position + 1))
@@ -99,6 +104,7 @@ public class MainActivity extends ActionBarActivity
      */
     public void onSectionAttached(String title) {
         mTitle = title;
+
         Log.i("MainActivity", title);
     }
 

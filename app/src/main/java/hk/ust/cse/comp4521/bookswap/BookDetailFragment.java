@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -21,11 +23,13 @@ public class BookDetailFragment extends Fragment {
     private static final String ARG_PARAM1 = "imageID";
     private static final String ARG_PARAM2 = "bookName";
     private static final String ARG_PARAM3 = "bookAuthor";
+    private static final String ARG_PARAM4 = "bookType";
 
     // TODO: Rename and change types of parameters
     private int imageID;
     private String bookName;
     private String bookAuthor;
+    private String bookType;
 
 
     /**
@@ -35,15 +39,18 @@ public class BookDetailFragment extends Fragment {
      * @param imageID drawable id for book cover
      * @param bookName
      * @param bookAuthor
+     * @param bookType
      * @return A new instance of fragment BookDetailFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static BookDetailFragment newInstance(int imageID, String bookName, String bookAuthor) {
+    public static BookDetailFragment newInstance(int imageID, String bookName, String bookAuthor,
+                                                 String bookType) {
         BookDetailFragment fragment = new BookDetailFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_PARAM1, imageID);
         args.putString(ARG_PARAM2, bookName);
         args.putString(ARG_PARAM3, bookAuthor);
+        args.putString(ARG_PARAM4, bookType);
         fragment.setArguments(args);
         return fragment;
     }
@@ -59,6 +66,7 @@ public class BookDetailFragment extends Fragment {
             imageID = getArguments().getInt(ARG_PARAM1);
             bookName= getArguments().getString(ARG_PARAM2);
             bookAuthor= getArguments().getString(ARG_PARAM3);
+            bookType= getArguments().getString(ARG_PARAM4);
         }
     }
 
@@ -77,6 +85,9 @@ public class BookDetailFragment extends Fragment {
 
         bookcoverView.setImageResource(imageID);
 
+        if(bookType == getString(R.string.title_section2)){
+            ((TextView) rootView.findViewById(R.id.borrow_get_book_btn)).setText(getString(R.string.book_action_get));
+        }
         return rootView;
     }
 

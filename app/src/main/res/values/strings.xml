@@ -14,6 +14,9 @@
     <string name="title_section5">Setting</string>
     <string name="title_book_detail">Book detail</string>
 
+    <string name="book_action_borrow">Borrow this book!</string>
+    <string name="book_action_get">Get this book!</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
