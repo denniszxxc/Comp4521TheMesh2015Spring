@@ -1,13 +1,16 @@
 package hk.ust.cse.comp4521.bookswap;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -17,7 +20,7 @@ import org.w3c.dom.Text;
  * Use the {@link BookDetailFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BookDetailFragment extends Fragment {
+public class BookDetailFragment extends Fragment implements View.OnClickListener {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "imageID";
@@ -88,8 +91,29 @@ public class BookDetailFragment extends Fragment {
         if(bookType == getString(R.string.title_section2)){
             ((TextView) rootView.findViewById(R.id.borrow_get_book_btn)).setText(getString(R.string.book_action_get));
         }
+
+        Button getBookBtn = (Button) rootView.findViewById(R.id.borrow_get_book_btn);
+        getBookBtn.setOnClickListener(this);
+
+
         return rootView;
     }
 
 
+    /**
+     * Called when a view has been clicked.
+     *
+     * @param v The view that was clicked.
+     */
+    @Override
+    public void onClick(View v) {
+        ((Button) v).setText("Waiting to confirm");
+
+        Context context = this.getActivity();
+        CharSequence text = "Request Sent. \n Waiting for owner's confirmation.";
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
 }

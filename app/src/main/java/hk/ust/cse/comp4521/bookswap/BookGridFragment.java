@@ -97,7 +97,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
                 imgText = getResources().getStringArray(R.array.img_title_array);
                 imgAuthor = getResources().getStringArray(R.array.img_author_array);
             }
-        
+
 
         List<Map<String, Object>> items = new ArrayList<Map<String,Object>>();
         for (int i = 0; i < imgText.length; i++) {
@@ -123,6 +123,8 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         if(mtitle != getString(R.string.title_section3)){
             actionButton.dismiss();
         }
+
+
 
         return rootView;
     }
