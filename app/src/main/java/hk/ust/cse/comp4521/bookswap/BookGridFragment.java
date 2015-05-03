@@ -6,10 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 // import android.app.Fragment;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
@@ -27,7 +29,7 @@ import java.util.Map;
  * Use the {@link BookGridFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BookGridFragment extends Fragment {
+public class BookGridFragment extends Fragment implements AdapterView.OnItemClickListener {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
 
@@ -40,6 +42,10 @@ public class BookGridFragment extends Fragment {
     private String mtitle;
 
     private OnFragmentInteractionListener mListener;
+
+    private String[] imgText;
+    private  TypedArray imgs;
+    private String[] imgAuthor;
 
     /**
      * Use this factory method to create a new instance of
@@ -76,8 +82,9 @@ public class BookGridFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_book_grid_list, container, false);
 
         // read sample data reasource
-        TypedArray imgs = getResources().obtainTypedArray(R.array.img_id_array);
-        String[] imgText = getResources().getStringArray(R.array.img_title_array);
+        imgs = getResources().obtainTypedArray(R.array.img_id_array);
+        imgText = getResources().getStringArray(R.array.img_title_array);
+        imgAuthor = getResources().getStringArray(R.array.img_author_array);
 
         List<Map<String, Object>> items = new ArrayList<Map<String,Object>>();
         for (int i = 0; i < imgText.length; i++) {
@@ -95,6 +102,7 @@ public class BookGridFragment extends Fragment {
         gridView.setNumColumns(3);
         gridView.setAdapter(adapter);
 
+        gridView.setOnItemClickListener(this);
 
         return rootView;
     }
@@ -123,6 +131,30 @@ public class BookGridFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
+
+    /**
+     * Callback method to be invoked when an item in this AdapterView has
+     * been clicked.
+     * <p/>
+     * Implementers can call getItemAtPosition(position) if they need
+     * to access the data associated with the selected item.
+     *
+     * @param parent   The AdapterView where the click happened.
+     * @param view     The view within the AdapterView that was clicked (this
+     *                 will be a view provided by the adapter)
+     * @param position The position of the view in the adapter.
+     * @param id       The row id of the item that was clicked.
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        final FragmentTransaction ft = getFragmentManager().beginTransaction();
+        ft.replace(R.id.container, BookDetailFragment.newInstance(imgs.getResourceId(position, -1), imgText[position], imgAuthor[position]));
+        ft.addToBackStack(null);
+        ft.commit();
+        ((MainActivity) mListener).onSectionAttached(getString(R.string.title_activity_book_details));
+    }
+
+
 
     /**
      * This interface must be implemented by activities that contain this

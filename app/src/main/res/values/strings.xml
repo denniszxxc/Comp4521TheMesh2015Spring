@@ -12,6 +12,7 @@
     <string name="title_section3">My Library</string>
     <string name="title_section4">Friend List</string>
     <string name="title_section5">Setting</string>
+    <string name="title_book_detail">Book detail</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
