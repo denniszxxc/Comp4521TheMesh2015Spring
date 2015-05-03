@@ -42,5 +42,59 @@
     </string-array>
 
 
-    };
+
+    <string-array name="dn_img_id_array">
+        <item>@drawable/cover11</item>
+        <item>@drawable/cover12</item>
+        <item>@drawable/cover13</item>
+        <item>@drawable/cover14</item>
+        <item>@drawable/cover15</item>
+        <item>@drawable/cover16</item>
+        <item>@drawable/cover17</item>
+    </string-array>
+
+    <string-array name="dn_img_title_array">
+        <item>The Complete Big Nate: #6</item>
+        <item>Stonewall: Breaking Out in the Fight for Gay Rights</item>
+        <item>Dust to Dust</item>
+        <item>Galgorithm</item>
+        <item>Lots of Bots</item>
+        <item>Henry\'s Stars</item>
+        <item>City Light</item>
+    </string-array>
+
+    <string-array name="dn_img_author_array">
+        <item>Lincoln Peirce</item>
+        <item>Ann Bausum</item>
+        <item>Melissa Walker</item>
+        <item>Aaron Karo</item>
+        <item>C. J. Richards</item>
+        <item>David Elliot</item>
+        <item>Harry Mazer</item>
+    </string-array>
+
+
+
+    <string-array name="my_img_id_array">
+        <item>@drawable/cover21</item>
+        <item>@drawable/cover22</item>
+        <item>@drawable/cover23</item>
+        <item>@drawable/cover24</item>
+
+    </string-array>
+
+    <string-array name="my_img_title_array">
+        <item>Complete Poems of Edgar Allan Poe</item>
+        <item>The Great Gatsby</item>
+        <item>Tarzan of the Apes</item>
+        <item>The Autobiography of Benjamin Franklin</item>
+    </string-array>
+
+    <string-array name="my_img_author_array">
+        <item>Edgar Allan Poe</item>
+        <item>F. Scott Fitzgerald</item>
+        <item>Edgar Rice Burroughs</item>
+        <item>Benjamin Franklin</item>
+    </string-array>
+
 </resources>

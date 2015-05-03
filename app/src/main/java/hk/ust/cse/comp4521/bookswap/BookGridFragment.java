@@ -15,6 +15,8 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 
+import com.software.shell.fab.ActionButton;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -82,9 +84,20 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         View rootView = inflater.inflate(R.layout.activity_book_grid_list, container, false);
 
         // read sample data reasource
-        imgs = getResources().obtainTypedArray(R.array.img_id_array);
-        imgText = getResources().getStringArray(R.array.img_title_array);
-        imgAuthor = getResources().getStringArray(R.array.img_author_array);
+        if(mtitle == getString(R.string.title_section3)) {
+            imgs = getResources().obtainTypedArray(R.array.my_img_id_array);
+            imgText = getResources().getStringArray(R.array.my_img_title_array);
+            imgAuthor = getResources().getStringArray(R.array.my_img_author_array);
+        } else if(mtitle == getString(R.string.title_section2)) {
+            imgs = getResources().obtainTypedArray(R.array.dn_img_id_array);
+            imgText = getResources().getStringArray(R.array.dn_img_title_array);
+            imgAuthor = getResources().getStringArray(R.array.dn_img_author_array);
+        } else {
+                imgs = getResources().obtainTypedArray(R.array.img_id_array);
+                imgText = getResources().getStringArray(R.array.img_title_array);
+                imgAuthor = getResources().getStringArray(R.array.img_author_array);
+            }
+        
 
         List<Map<String, Object>> items = new ArrayList<Map<String,Object>>();
         for (int i = 0; i < imgText.length; i++) {
@@ -103,6 +116,13 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener(this);
+
+        // handle the action button
+        ActionButton actionButton = (ActionButton) rootView.findViewById(R.id.action_button);
+
+        if(mtitle != getString(R.string.title_section3)){
+            actionButton.dismiss();
+        }
 
         return rootView;
     }
