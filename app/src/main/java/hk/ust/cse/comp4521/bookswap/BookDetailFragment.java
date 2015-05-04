@@ -79,18 +79,25 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.activity_book_details, container, false);
+        View rootView;
+        //TODO fixed my library
+//        if (bookType == getString(R.string.title_section3)) {
+//            rootView = inflater.inflate(R.layout.fragment_my_book_detail, container, false);
+//        }else {
+
+            rootView = inflater.inflate(R.layout.activity_book_details, container, false);
+//        }
 
         ImageView bookcoverView = (ImageView) rootView.findViewById(R.id.bookcover);
         TextView booknameView = (TextView) rootView.findViewById(R.id.bookname);
         TextView bookAuthorView = (TextView) rootView.findViewById(R.id.bookAuthor);
 
-        booknameView.setText("Book name: " +bookName);
+        booknameView.setText("Book name: " + bookName);
         bookAuthorView.setText("Author: " + bookAuthor);
 
         bookcoverView.setImageResource(imageID);
 
-        if(bookType == getString(R.string.title_section2)){
+        if (bookType == getString(R.string.title_section2)) {
             ((TextView) rootView.findViewById(R.id.borrow_get_book_btn)).setText(getString(R.string.book_action_get));
         }
 
