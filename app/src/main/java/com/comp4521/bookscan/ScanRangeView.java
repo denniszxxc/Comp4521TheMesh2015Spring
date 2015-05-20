@@ -36,9 +36,9 @@ public class ScanRangeView extends View { // the code in this view will be decod
 			mRight = centerX + centerX/2;
 			mBottom = centerY + centerY/2;
 		} else {
-			mLeft = centerX - 37*centerX/64;
+			mLeft = centerX - 34*centerX/64;
 			mTop = centerY - 35*centerY/64;
-			mRight = centerX + 37*centerX/64;
+			mRight = centerX + 34*centerX/64;
 			mBottom = centerY + 35*centerY/64;
 		}
 		Log.i(DEBUG_TAG, "screenWidth(x): " + Integer.toString(screenWidth));
