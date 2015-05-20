@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="greyBackground" type="color">#e5e5e5</item>
-    <item name="whiteBackground" type="color">#FFFFFF</item>
-    <item name="barBackground" type="color">#AA66CC</item>
-
-    <color name="black_overlay">#66000000</color>
-</resources>
