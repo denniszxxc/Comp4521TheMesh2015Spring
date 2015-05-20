@@ -43,4 +43,4 @@
         fab:show_animation="@anim/fab_roll_from_down"
         fab:type="DEFAULT" />
 </RelativeLayout>
-<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/layout/activity_book_grid_list.xml -->
+<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/activity_book_grid_list.xml -->

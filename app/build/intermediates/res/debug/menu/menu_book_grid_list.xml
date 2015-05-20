@@ -4,4 +4,4 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
 </menu>
-<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/menu/menu_book_grid_list.xml -->
+<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/menu/menu_book_grid_list.xml -->

@@ -8,4 +8,4 @@
     android:checkMark="?android:attr/listChoiceIndicatorMultiple"
     android:paddingLeft="6dip"
     android:paddingRight="6dip"
-    android:ellipsize="end" /><!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/layout/scan_book_list.xml -->
+    android:ellipsize="end" /><!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/scan_book_list.xml -->

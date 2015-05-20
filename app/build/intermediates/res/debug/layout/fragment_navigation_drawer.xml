@@ -4,4 +4,4 @@
     android:divider="@android:color/transparent" android:dividerHeight="0dp"
     android:background="#cccc"
     tools:context="hk.ust.cse.bookscan.bookscan.MainLayout.NavigationDrawerFragment" />
-<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/layout/fragment_navigation_drawer.xml -->
+<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/fragment_navigation_drawer.xml -->

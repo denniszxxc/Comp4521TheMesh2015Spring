@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/sample_data.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/sample_data.xml -->
     <eat-comment/>
     <string-array name="dn_img_author_array">
         <item>Lincoln Peirce</item>
@@ -83,7 +83,7 @@
         <item>Tarzan of the Apes</item>
         <item>The Autobiography of Benjamin Franklin</item>
     </string-array>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -105,11 +105,11 @@
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <item name="barBackground" type="color">#AA66CC</item>
     <color name="black_overlay">#66000000</color>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
@@ -123,7 +123,7 @@
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
     <color name="dim_foreground_material_light">#ff323232</color>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.github.shell-software/fab/1.0.5/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.github.shell-software/fab/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <color name="fab_material_amber_500">#ffc107</color>
     <color name="fab_material_amber_900">#ff6f00</color>
@@ -165,10 +165,10 @@
     <color name="fab_material_white">#ffffff</color>
     <color name="fab_material_yellow_500">#ffeb3b</color>
     <color name="fab_material_yellow_900">#f57f17</color>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <item name="greyBackground" type="color">#e5e5e5</item>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
@@ -197,7 +197,7 @@
     <color name="secondary_text_disabled_material_light">#24000000</color>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/colors.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/colors.xml -->
     <eat-comment/>
     <item name="whiteBackground" type="color">#FFFFFF</item>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
@@ -225,7 +225,7 @@
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="theme"/><attr format="reference" name="collapseIcon"/><attr format="string" name="collapseContentDescription"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_material">4dp</dimen>
@@ -264,11 +264,11 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -276,13 +276,13 @@
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.github.shell-software/fab/1.0.5/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.github.shell-software/fab/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <dimen name="fab_margin">16dp</dimen>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="navigation_drawer_width">240dp</dimen>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -310,7 +310,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_example">    </string>
     <string name="action_settings">Settings</string>
@@ -340,7 +340,7 @@
     <string name="title_section3">My Library</string>
     <string name="title_section4">Friend List</string>
     <string name="title_section5">Setting</string>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
@@ -352,7 +352,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -1106,7 +1106,7 @@
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="ButtonBar">
         <item name="android:paddingLeft">2dp</item>
@@ -1116,7 +1116,7 @@
         <item name="android:background">@android:drawable/bottom_bar</item>
     </style>
     <style name="ButtonBarButton"/>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/themes.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -1124,7 +1124,7 @@
         <!-- Support library compatibility -->
         <item name="actionBarStyle">@style/MyActionBar</item>
     </style>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
@@ -1132,7 +1132,7 @@
         <item name="metaButtonBarStyle">@style/ButtonBar</item>
         <item name="metaButtonBarButtonStyle">@style/ButtonBarButton</item>
     </style>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/values/themes.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/themes.xml -->
     <eat-comment/>
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/barBackground</item>
@@ -1140,7 +1140,7 @@
         <!-- Support library compatibility -->
         <item name="background">@color/barBackground</item>
     </style>
-    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
+    <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

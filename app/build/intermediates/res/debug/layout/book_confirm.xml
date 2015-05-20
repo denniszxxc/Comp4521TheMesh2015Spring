@@ -54,4 +54,4 @@
         android:layout_alignParentLeft="true"
         android:text="@string/confirm" />
     
-</RelativeLayout><!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/layout/book_confirm.xml -->
+</RelativeLayout><!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/book_confirm.xml -->
