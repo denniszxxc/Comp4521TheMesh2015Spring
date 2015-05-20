@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.comp4521.bookscan.MainActivity$PlaceholderFragment" >
+
+    <ImageButton
+        android:id="@+id/scan_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="@string/test"
+        android:src="@android:drawable/btn_star" />
+
+</RelativeLayout>
+<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookScan1/app/src/main/res/layout/test_main.xml -->

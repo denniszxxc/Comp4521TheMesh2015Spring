@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+     <string name="test">Test</string>
+	<!--<string name="app_name">BookScan</string>
+    <string name="action_settings">Settings</string>
+    -->
+	<string name="empty">List is empty</string>
+	<string name="confirm">Confirm</string>
+	<string name="book_info">Book Title / Author</string>
+	<string name="delete_books">Delete Books</string>
+	<string name="found_books">Found: 0</string>
+	<string name="scanned_books">Scanned: 0</string>
+	<string name="finish">Finish</string>
+
+
+	<string name="app_name">Book Swap</string>
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+	<string name="title_activity_book_details">BookDetails</string>
+	<string name="title_activity_main">The Mesh</string>
+
+	<string name="title_section1">Available Books</string>
+	<string name="title_section2">Donated Books</string>
+	<string name="title_section3">My Library</string>
+	<string name="title_section4">Friend List</string>
+	<string name="title_section5">Setting</string>
+	<string name="title_book_detail">Book detail</string>
+
+	<string name="book_action_borrow">Borrow this book!</string>
+	<string name="book_action_get">Get this book!</string>
+
+	<string name="navigation_drawer_open">Open navigation drawer</string>
+	<string name="navigation_drawer_close">Close navigation drawer</string>
+
+	<string name="action_example">    </string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+
+	<string name="title_activity_fullscreen_activity_chat">FullscreenActivityChat</string>
+	<string name="dummy_button">Dummy Button</string>
+	<string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>
