@@ -14,7 +14,7 @@ public class ScanRangeView extends View { // the code in this view will be decod
 	private int mLeft, mTop, mRight, mBottom;
 	private int screenWidth, screenHeight;
 	private boolean mIsPortait;
-	
+
 	public ScanRangeView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		// TODO Auto-generated constructor stub
@@ -23,7 +23,7 @@ public class ScanRangeView extends View { // the code in this view will be decod
 		mPaint.setStyle(Paint.Style.STROKE);
 		mPaint.setStrokeWidth(5);
 	}
-	
+
 	public void update(int width, int height, boolean isPortait) {
 		mIsPortait = isPortait;
 		screenWidth = width; // width < height if isPortait, else  width > height
@@ -36,9 +36,9 @@ public class ScanRangeView extends View { // the code in this view will be decod
 			mRight = centerX + centerX/2;
 			mBottom = centerY + centerY/2;
 		} else {
-			mLeft = centerX - 34*centerX/64;
+			mLeft = centerX - 34*centerX/64;//37*centerX/64;
 			mTop = centerY - 35*centerY/64;
-			mRight = centerX + 34*centerX/64;
+			mRight = centerX + 34*centerX/64;//37*centerX/64;
 			mBottom = centerY + 35*centerY/64;
 		}
 		Log.i(DEBUG_TAG, "screenWidth(x): " + Integer.toString(screenWidth));
@@ -51,32 +51,32 @@ public class ScanRangeView extends View { // the code in this view will be decod
 		Log.i(DEBUG_TAG, "mBottom(y): " + Integer.toString(mBottom));
 		invalidate();
 	}
-	
+
 	public int getScanRangeLeft() {
 		return mLeft;
 	}
-	
+
 	public int getScanRangeTop() {
 		return mTop;
 	}
-	
+
 	public int getScanRangeAreaWidth() {
 		return mRight - mLeft;
 	}
-	
+
 	@Override
 	protected void onDraw(Canvas canvas) {
 		// TODO Auto-generated method stub
 		super.onDraw(canvas);
 		if(mIsPortait) {
-			canvas.drawRect((int)(3*screenWidth/16), (int)((2*screenHeight-screenWidth)/8)-25, 
+			canvas.drawRect((int)(3*screenWidth/16), (int)((2*screenHeight-screenWidth)/8)-25,
 					(int)(13*screenWidth/16), (int)((6*screenHeight+screenWidth)/8)-25, mPaint);
-			canvas.drawRect((int)(3*screenWidth/16), (int)((2*screenHeight-screenWidth)/8)-25, 
+			canvas.drawRect((int)(3*screenWidth/16), (int)((2*screenHeight-screenWidth)/8)-25,
 					screenWidth/2, (int)((6*screenHeight+screenWidth)/8)-25, mPaint);
 		} else {
-			canvas.drawRect(mLeft, mTop-25, 
+			canvas.drawRect(mLeft, mTop-25,
 					mRight, mBottom-25, mPaint);
-			canvas.drawRect(mLeft, mTop-25, 
+			canvas.drawRect(mLeft, mTop-25,
 					mRight, screenHeight/2-25, mPaint);
 		}
 	}
