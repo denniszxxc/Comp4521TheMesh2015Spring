@@ -1,11 +1,13 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
+    android:id="@+id/swipe_layout"
     tools:context=".BookGridList">
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <GridView
             android:id="@+id/main_page_gridview"
             android:layout_width="fill_parent"
@@ -42,5 +44,6 @@
         fab:shadow_yOffset="2.0dp"
         fab:show_animation="@anim/fab_roll_from_down"
         fab:type="DEFAULT" />
-</RelativeLayout>
+    </RelativeLayout>
+</android.support.v4.widget.SwipeRefreshLayout>
 <!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/activity_book_grid_list.xml -->

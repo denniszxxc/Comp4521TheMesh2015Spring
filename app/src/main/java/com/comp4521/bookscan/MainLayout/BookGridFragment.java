@@ -5,8 +5,10 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.comp4521.bookscan.BookScanActivity;
 import com.software.shell.fab.ActionButton;
@@ -53,6 +56,8 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     private String[] imgText;
     private  TypedArray imgs;
     private String[] imgAuthor;
+
+    private SwipeRefreshLayout swipeLayout;
 
     /**
      * Use this factory method to create a new instance of
@@ -122,6 +127,17 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
 
         gridView.setOnItemClickListener(this);
 
+        // handle swipe layout
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_layout);
+        swipeLayout.setOnRefreshListener(onSwipeToRefresh);
+        swipeLayout.setColorSchemeResources(
+                android.R.color.holo_red_light,
+                android.R.color.holo_blue_light,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light);
+
+
+
 
         // handle the action button
         ActionButton actionButton = (ActionButton) rootView.findViewById(R.id.action_button);
@@ -137,6 +153,20 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         return rootView;
     }
 
+    private SwipeRefreshLayout.OnRefreshListener onSwipeToRefresh = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            swipeLayout.setRefreshing(true);
+            new Handler().postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+                    swipeLayout.setRefreshing(false);
+                    Toast.makeText(getActivity(), "Refresh done!", Toast.LENGTH_SHORT).show();
+                }
+            }, 3000);
+        }
+    };
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
