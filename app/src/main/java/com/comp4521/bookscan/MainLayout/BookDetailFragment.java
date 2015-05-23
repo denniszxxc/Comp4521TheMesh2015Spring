@@ -22,14 +22,11 @@ import com.example.bookscan.R;
  * create an instance of this fragment.
  */
 public class BookDetailFragment extends Fragment implements View.OnClickListener {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "imageID";
     private static final String ARG_PARAM2 = "bookName";
     private static final String ARG_PARAM3 = "bookAuthor";
     private static final String ARG_PARAM4 = "bookType";
 
-    // TODO: Rename and change types of parameters
     private int imageID;
     private String bookName;
     private String bookAuthor;
@@ -46,7 +43,6 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
      * @param bookType
      * @return A new instance of fragment BookDetailFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static BookDetailFragment newInstance(int imageID, String bookName, String bookAuthor,
                                                  String bookType) {
         BookDetailFragment fragment = new BookDetailFragment();

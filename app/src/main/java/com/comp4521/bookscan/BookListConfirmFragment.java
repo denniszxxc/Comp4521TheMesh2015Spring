@@ -206,7 +206,7 @@ public class BookListConfirmFragment extends ListFragment {
         mBuilder.setMessage("Data is uploading... Are you sure to leave? If Yes, all scanned book data may be gone!");
         mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-            	Intent intent = new Intent(getActivity(), MainActivity.class); // the class may be different
+            	Intent intent = new Intent(getActivity(), com.comp4521.bookscan.MainLayout.MainActivity.class); // the class may be different
             	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             	startActivity(intent);
             }
@@ -250,7 +250,7 @@ public class BookListConfirmFragment extends ListFragment {
     			backButtonDialog.dismiss();
     	
     	//back to last activity
-    	Intent intent = new Intent(getActivity(), MainActivity.class); // the class may be different
+    	Intent intent = new Intent(getActivity(), com.comp4521.bookscan.MainLayout.MainActivity.class); // the class may be different
     	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
     	startActivity(intent);
     }
