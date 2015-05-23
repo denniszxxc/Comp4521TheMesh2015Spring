@@ -122,6 +122,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
 
         gridView.setOnItemClickListener(this);
 
+
         // handle the action button
         ActionButton actionButton = (ActionButton) rootView.findViewById(R.id.action_button);
 

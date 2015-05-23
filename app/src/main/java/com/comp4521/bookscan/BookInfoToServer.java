@@ -11,7 +11,7 @@ public class BookInfoToServer {
 		JSONObject toSend = new JSONObject();
 		try {
 			toSend.put("handle_method", "BookListConfirm"); // this is an important data to indicate what function will be called in server
-			toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // need to be changed, to get this infomation from shared Preference
+			toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
 			toSend.put("book_data", bookResultJSON);
 			toSend.put("added_time", time);
 			toSend.put("offer_type", type);
