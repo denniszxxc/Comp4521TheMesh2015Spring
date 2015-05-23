@@ -32,8 +32,32 @@ public final class R {
         public static final int dn_img_author_array=0x7f0b0000;
         public static final int dn_img_id_array=0x7f0b0001;
         public static final int dn_img_title_array=0x7f0b0002;
+        /** <item>邱健恩</item>
+<item>約翰・葛林</item>
+<item>高俊權</item>
+<item>陳俊旭</item>
+<item>蘇珊·柯林斯</item>
+<item>方芍堯</item>
+<item>鄭匡宇</item>
+         */
         public static final int img_author_array=0x7f0b0003;
+        /** <item>@drawable/cover04</item>
+        <item>@drawable/cover05</item>
+        <item>@drawable/cover06</item>
+        <item>@drawable/cover07</item>
+        <item>@drawable/cover08</item>
+        <item>@drawable/cover09</item>
+
+         */
         public static final int img_id_array=0x7f0b0004;
+        /**         <item>生命中的美好缺憾</item>
+        <item>小錢買股101招就賺夠</item>
+        <item>健康，不是數字說了算</item>
+        <item>自由幻夢（飢餓遊戲3)</item>
+        <item>第一次做 MOCHI</item>
+        <item>搭訕聖經</item>
+        
+         */
         public static final int img_title_array=0x7f0b0005;
         public static final int my_img_author_array=0x7f0b0006;
         public static final int my_img_id_array=0x7f0b0007;

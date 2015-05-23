@@ -2264,13 +2264,13 @@
         <item>陳鈺</item>
         <item>林肇賢</item>
         <item>曾淑貞</item>
-        <item>邱健恩</item>
-        <item>約翰・葛林</item>
-        <item>高俊權</item>
-        <item>陳俊旭</item>
-        <item>蘇珊·柯林斯</item>
-        <item>方芍堯</item>
-        <item>鄭匡宇</item>
+        <!--<item>邱健恩</item>-->
+        <!--<item>約翰・葛林</item>-->
+        <!--<item>高俊權</item>-->
+        <!--<item>陳俊旭</item>-->
+        <!--<item>蘇珊·柯林斯</item>-->
+        <!--<item>方芍堯</item>-->
+        <!--<item>鄭匡宇</item>-->
     </string-array><string-array name="dn_img_title_array">
         <item>The Complete Big Nate: #6</item>
         <item>Stonewall: Breaking Out in the Fight for Gay Rights</item>
@@ -2299,23 +2299,24 @@
         <item>@drawable/cover01</item>
         <item>@drawable/cover02</item>
         <item>@drawable/cover03</item>
-        <item>@drawable/cover04</item>
+        <!--<item>@drawable/cover04</item>
         <item>@drawable/cover05</item>
         <item>@drawable/cover06</item>
         <item>@drawable/cover07</item>
         <item>@drawable/cover08</item>
         <item>@drawable/cover09</item>
-
+-->
     </string-array><string-array name="img_title_array">
         <item>別生氣，這就是人性！：你非懂不可的54個心理學法則</item>
         <item>今天學心理學了沒？</item>
         <item>英語點心</item>
-        <item>生命中的美好缺憾</item>
+<!--        <item>生命中的美好缺憾</item>
         <item>小錢買股101招就賺夠</item>
         <item>健康，不是數字說了算</item>
         <item>自由幻夢（飢餓遊戲3)</item>
         <item>第一次做 MOCHI</item>
         <item>搭訕聖經</item>
+        -->
     </string-array></file><file path="/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/strings.xml" qualifiers=""><string name="empty">List is empty</string><string name="scanned_books">Scanned: 0</string><string name="title_book_detail">Book detail</string><string name="test">Test</string><string name="book_action_get">Get this book!</string><string name="delete_books">Delete Books</string><string name="confirm">Confirm</string><string name="found_books">Found: 0</string><string name="title_activity_book_details">BookDetails</string><string name="navigation_drawer_open">Open navigation drawer</string><string name="hello_world">Hello world!</string><string name="dummy_button">Dummy Button</string><string name="action_settings">Settings</string><string name="app_name">Book Swap</string><string name="title_activity_main">The Mesh</string><string name="finish">Finish</string><string name="book_info">Book Title / Author</string><string name="action_example">    </string><string name="hello_blank_fragment">Hello blank fragment</string><string name="title_activity_fullscreen_activity_chat">FullscreenActivityChat</string><string name="navigation_drawer_close">Close navigation drawer</string><string name="title_section5">Setting</string><string name="title_section4">Friend List</string><string name="title_section1">Available Books</string><string name="book_action_borrow">Borrow this book!</string><string name="title_section3">My Library</string><string name="title_section2">Donated Books</string><string name="dummy_content">DUMMY\nCONTENT</string></file><file path="/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/values/styles.xml" qualifiers=""><style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
     </style><style name="ButtonBarButton"/><style name="ButtonBar">
