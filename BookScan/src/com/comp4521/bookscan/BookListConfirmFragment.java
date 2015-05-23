@@ -70,8 +70,8 @@ public class BookListConfirmFragment extends ListFragment {
         dataFromOtherFragment();
         if(!bookResultFromArgs)
 	        if(savedInstanceState != null) {
-	            ArrayList<String> LongTest = savedInstanceState.getStringArrayList("bookInfo_bookResult");
-	            Log.d(TAG, "BookListConfirmFragment get savedInstanceState LongTest="+LongTest.toString());        
+	        	bookResult = savedInstanceState.getStringArrayList("bookInfo_bookResult");
+	            Log.d(TAG, "BookListConfirmFragment get savedInstanceState bookResult = " + bookResult.toString());        
 	        }
     	Log.i(TAG, "BookListConfirmFragment onActivityCreated()!");
         super.onActivityCreated(savedInstanceState);
