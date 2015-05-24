@@ -76,6 +76,8 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     private String[] imgAuthor;
     private String[] imgCover;
     private String[] imgbookIDs;
+    private String[] imgBookOwner;
+    private String[] imgBookOfferType;
 
     Parcelable state;
 
@@ -153,8 +155,6 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             }
         });
 
-
-
         // handle the action button
         ActionButton actionButton = (ActionButton) rootView.findViewById(R.id.action_button);
 
@@ -163,7 +163,6 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         } else {
             actionButton.setOnClickListener(this);
         }
-
 
         if(state != null) {
             Log.d(TAG, "trying to restore listview state..");
@@ -199,9 +198,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         }
 
         items = new ArrayList<Map<String,Object>>();
-
         new RefreshMyLibraryTask().execute();
-
         gridListAdapter = new SimpleAdapter(getActivity(),
                 items, R.layout.grid_item, new String[]{"image", "text"},
                 new int[]{R.id.image, R.id.text});
@@ -250,7 +247,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
 
         final FragmentTransaction ft = getFragmentManager().beginTransaction();
         ft.replace(R.id.container, BookDetailFragment.newInstance(imgCover[position],
-                imgText[position], imgAuthor[position], imgbookIDs[position], mtitle));
+                imgText[position], imgAuthor[position], imgbookIDs[position], imgBookOwner[position], mtitle));
         ft.addToBackStack(null);
         ft.commit();
     }
@@ -301,6 +298,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             JSONObject receivedJson;
             if(mtitle == getResources().getString(R.string.title_section3)) {
                 receivedJson = server.getBookListOfOneUser("useriduselessfornow");
+
             } else if(mtitle == getString(R.string.title_section2)) {
                 receivedJson = server.getBookListAll("useriduselessfornow");
             } else {
@@ -313,6 +311,8 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
                     imgCover = receviedJsonTolocalArray(receivedJson,"cover");
                     imgbookIDs = receviedJsonTolocalArray(receivedJson,"server_book_id");
                     imgText = receviedJsonTolocalArray(receivedJson,"name");
+                    imgBookOwner = receviedJsonTolocalArray(receivedJson,"user_id");
+                    imgbookIDs = receviedJsonTolocalArray(receivedJson,"server_book_id");
 
 
                 } catch (JSONException e) {
@@ -333,10 +333,10 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             swipeLayout.setRefreshing(false);
 
             if(connectSuccess) {
-
                 displayDataOnGrid();
             } else {
                 Toast.makeText(getActivity(), "Connection failed! Please Try again.", Toast.LENGTH_SHORT).show();
+
             }
         }
 

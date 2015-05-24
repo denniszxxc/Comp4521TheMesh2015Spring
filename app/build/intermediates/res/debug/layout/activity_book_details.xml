@@ -50,7 +50,7 @@
         </LinearLayout>
 
             <Button
-                android:id="@+id/borrow_get_book_btn"
+                android:id="@+id/borrow_get_del_book_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/book_action_borrow"
