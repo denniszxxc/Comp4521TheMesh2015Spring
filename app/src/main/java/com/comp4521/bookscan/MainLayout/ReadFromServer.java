@@ -24,4 +24,18 @@ public class ReadFromServer {
         DataToServerFunction dataToServer = new DataToServerFunction(); // send json data to server though this class
         return dataToServer.sendDataToServer(toSend, true, true);
     }
+
+    public JSONObject getBookListAll(String targetUserID) {
+        JSONObject toSend = new JSONObject();
+        try {
+            toSend.put("handle_method", "GetAListOfBooks"); // this is an important data to indicate what function will be called in server
+            toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        DataToServerFunction dataToServer = new DataToServerFunction(); // send json data to server though this class
+        return dataToServer.sendDataToServer(toSend, true, true);
+    }
 }

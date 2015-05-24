@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.bookscan.R;
+import com.squareup.picasso.Picasso;
 
 
 /**
@@ -22,14 +23,16 @@ import com.example.bookscan.R;
  * create an instance of this fragment.
  */
 public class BookDetailFragment extends Fragment implements View.OnClickListener {
-    private static final String ARG_PARAM1 = "imageID";
+    private static final String ARG_PARAM1 = "imageURL";
     private static final String ARG_PARAM2 = "bookName";
     private static final String ARG_PARAM3 = "bookAuthor";
-    private static final String ARG_PARAM4 = "bookType";
+    private static final String ARG_PARAM4 = "bookID";
+    private static final String ARG_PARAM5 = "bookType";
 
-    private int imageID;
+    private String imageURL;
     private String bookName;
     private String bookAuthor;
+    private String bookID;
     private String bookType;
 
 
@@ -37,20 +40,21 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param imageID drawable id for book cover
+     * @param imageURL URLfor book cover
      * @param bookName
      * @param bookAuthor
      * @param bookType
      * @return A new instance of fragment BookDetailFragment.
      */
-    public static BookDetailFragment newInstance(int imageID, String bookName, String bookAuthor,
-                                                 String bookType) {
+    public static BookDetailFragment newInstance(String imageURL, String bookName, String bookAuthor,
+                                                 String bookID, String bookType) {
         BookDetailFragment fragment = new BookDetailFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_PARAM1, imageID);
+        args.putString(ARG_PARAM1, imageURL);
         args.putString(ARG_PARAM2, bookName);
         args.putString(ARG_PARAM3, bookAuthor);
-        args.putString(ARG_PARAM4, bookType);
+        args.putString(ARG_PARAM4, bookAuthor);
+        args.putString(ARG_PARAM5, bookType);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,10 +67,11 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            imageID = getArguments().getInt(ARG_PARAM1);
+            imageURL = getArguments().getString(ARG_PARAM1);
             bookName= getArguments().getString(ARG_PARAM2);
             bookAuthor= getArguments().getString(ARG_PARAM3);
-            bookType= getArguments().getString(ARG_PARAM4);
+            bookID= getArguments().getString(ARG_PARAM4);
+            bookType= getArguments().getString(ARG_PARAM5);
         }
     }
 
@@ -90,7 +95,8 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
         booknameView.setText("Book name: " + bookName);
         bookAuthorView.setText("Author: " + bookAuthor);
 
-        bookcoverView.setImageResource(imageID);
+        Picasso.with(container.getContext()).load(imageURL).into((ImageView) bookcoverView);
+
 
         if (bookType == getString(R.string.title_section2)) {
             ((TextView) rootView.findViewById(R.id.borrow_get_book_btn)).setText(getString(R.string.book_action_get));
