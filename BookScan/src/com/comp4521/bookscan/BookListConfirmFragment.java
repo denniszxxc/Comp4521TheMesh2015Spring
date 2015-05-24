@@ -17,9 +17,11 @@ import org.json.JSONObject;
 
 import com.example.bookscan.R;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ListFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -29,7 +31,7 @@ import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.v4.app.ListFragment;
+//import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.KeyEvent;
@@ -42,6 +44,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 
+@SuppressLint("NewApi")
 public class BookListConfirmFragment extends ListFragment {
 	public final static String TAG = "BookListConfirmFragment";
     private ArrayList<String> list = new ArrayList<String>();
@@ -115,8 +118,6 @@ public class BookListConfirmFragment extends ListFragment {
     	for(int i=0; i<bookResult.size(); i++) {
     		String[] items = bookResult.get(i).split("@");
     		list.add(items[0] + " / \n" + items[1]);
-    		items[2] = items[2].replace('&', '^'); // change some data's sign here
-    		bookResultJSON.put(items[0] +"@"+ items[1] +"@"+ items[2] +"@"+ items[3]);
     	}
     }
     
@@ -144,7 +145,7 @@ public class BookListConfirmFragment extends ListFragment {
                     	Log.i(TAG, "Selected item: " + Integer.toString(i));
                         adapter.remove(list.get(i));
                         bookResult.remove(i);
-                        bookResultJSON.remove(i);
+                        //bookResultJSON.remove(i);
                     }
                 }
                 checkedItemPositions.clear();
@@ -319,6 +320,11 @@ public class BookListConfirmFragment extends ListFragment {
 	}
     
     private JSONObject dataToServer(String time, String type) {
+    	for(int i=0; i<bookResult.size(); i++) {
+    		String[] items = bookResult.get(i).split("@");
+    		items[2] = items[2].replace('&', '^'); // change some data's sign here
+    		bookResultJSON.put(items[0] +"@"+ items[1] +"@"+ items[2] +"@"+ items[3]);
+    	}
     	BookInfoToServer bookInfoToServer = new BookInfoToServer();
     	JSONObject receivedJson = bookInfoToServer.callInBookListConfirmFragment(bookIds, bookResultJSON, time, type);
     	Log.i(TAG, "upload in server done!");

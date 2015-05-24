@@ -2,17 +2,18 @@ package com.comp4521.bookscan;
 
 import java.util.ArrayList;
 
-import com.example.bookscan.R;
-
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
@@ -24,6 +25,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.bookscan.R;
+//import android.support.v4.app.Fragment;
+//import android.support.v4.app.FragmentTransaction;
+
+@SuppressLint("NewApi") 
 public class ScannerFragment extends Fragment implements OnClickListener {
 	public static final String TAG = "ScannerFragment";
 	private Context activityContext;
@@ -41,11 +47,13 @@ public class ScannerFragment extends Fragment implements OnClickListener {
 	private long totalInput;
 	private long success;
 	
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     public ScannerFragment() {
     	Log.i(TAG, "ScannerFragment class!");
         setArguments(new Bundle());
     }
     
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB) 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -57,6 +65,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
         return rootView;
     }
     
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB) 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         if(savedInstanceState != null) {
@@ -78,6 +87,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
     	allCameraSetting();
     }
 	
+    
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
@@ -89,6 +99,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
 		}
 	}
 	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB) 
 	@Override
 	public void onPause() {
 		if(mPreview != null)
@@ -97,6 +108,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
 		Log.d(TAG, "ScannerFragment onPause()!");
 	}
 	
+    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
     	// Save away the original text, so we still have it if the activity
@@ -111,6 +123,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
     	Log.d(TAG, "ScannerFragment onSaveInstanceState()!");
     }
 	
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB) 
 	@Override
 	public void onDestroyView() {
 		Log.i(TAG, "ScannerFragment onDestroyView()!");
@@ -219,7 +232,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
         Bundle args = new Bundle();
         args.putStringArrayList("bookInfo_bookResult", mPreview.getBookResult());
         newFragment.setArguments(args);
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getFragmentManager().beginTransaction();
         transaction.replace(R.id.container, newFragment);
         transaction.addToBackStack(null);
         transaction.commit();
