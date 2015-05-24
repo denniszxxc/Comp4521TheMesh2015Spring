@@ -77,4 +77,25 @@
 		
 		return $serverBookId;
 	}
+	
+	/**
+		Sub-functions for confirmBookBorrow, checkConfirmBookBorrow, deleteConfirmBookBorrow function
+	*/	
+	
+	function checkConfirmBookBorrowExist($dbConn, $userId, $serverBookId) {
+		$sql = "SELECT * FROM borrow_book_info WHERE server_book_id = $serverBookId AND user_id = '$userId'";
+		$result = $dbConn->query($sql);
+		
+		if($result);
+			//echo "Succeed for finding the book\n";
+		else
+			echo "Fail for finding the book\n".mysqli_error($dbConn)."\n";
+		$mysqlNumRows = $result->num_rows;
+		
+		if($mysqlNumRows) // There are records
+			return 1;
+		else // no record
+			return 0;
+	}
+	
 ?>

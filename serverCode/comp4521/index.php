@@ -21,7 +21,7 @@
 			deleteBook($data);
 		else if($data->handle_method == "ChangeUsername")
 			changeUsername($data);
-		else if($data->handle_method == "ChangeBookStatus")
+		else if($data->handle_method == "ChangeBookStatus") 
 			changeBookStatus($data);
 		else if($data->handle_method == "GetAListOfBooks"){
 			$list = getAListOfBooks($data);
@@ -33,6 +33,18 @@
 		} else if($data->handle_method == "GetAListOfBookFromTheUser") {
 			$jsonList = getAListOfBookFromTheUser($data);
 			echo $jsonList."\n";
+		}else if($data->handle_method == "ConfirmBookBorrow") {
+			$result = confirmBookBorrow($data);
+			$jsonResult = json_encode($result);
+			echo $jsonResult;
+		} else if($data->handle_method == "CheckConfirmBookBorrow") {
+			$result = checkConfirmBookBorrow($data);
+			$jsonResult = json_encode($result);
+			echo $jsonResult;
+		} else if($data->handle_method == "DeleteConfirmBookBorrow") {
+			$result = deleteConfirmBookBorrow($data);
+			$jsonResult = json_encode($result);
+			echo $jsonResult;
 		} else
 			echo "Error!.\n";
 

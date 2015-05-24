@@ -113,7 +113,7 @@
 	
 	function changeBookStatus($data) {
 		$dbConn = createDbConnection();
-		$userId = $data->user_id;//need
+		$userId = $data->lender_user_id;//need
 		$serverBookId = $data->book_id;//need
 		$targetStatus = $data->target_status;//need
 		$tableName = OwnerBookInfo::$DATABASE_TABLE_NAME;
@@ -127,15 +127,38 @@
 		$mysqlNumRows = $result->num_rows;
 		
 		if($mysqlNumRows) {
-			$sql = "UPDATE $tableName SET offer_type = '$targetStatus' WHERE server_book_id = $serverBookId AND user_id = '$userId'";
-			$result = $dbConn->query($sql);
+			if($targetStatus == 1) {
+				$sql = "UPDATE $tableName SET num_of_book_available = num_of_book_available + 1 WHERE server_book_id = $serverBookId AND user_id = '$userId'";
+				$result = $dbConn->query($sql);
 			
-			if($result);
-			//echo "Succeed for changing the book status\n";
-			else
-				echo "Fail for changing the book status\n".mysqli_error($dbConn)."\n";
+				if($result);
+				//echo "Succeed for changing the book status\n";
+				else
+					echo "Fail for changing the book status\n".mysqli_error($dbConn)."\n";
+				
+				echo "Success\n";
+			}
+			else {// $targetStatus == 0
+				$sql = "SELECT num_of_book_available FROM $tableName WHERE server_book_id = $serverBookId AND user_id = '$userId'";
+				$result = $dbConn->query($sql);
+				$row = $result->fetch_assoc();
+				
+				if(intval($row['num_of_book_available']) == 0)
+					echo "Fail\n";//The book is not available
+				else {
+					$sql = "UPDATE $tableName SET num_of_book_available = num_of_book_available - 1 WHERE server_book_id = $serverBookId AND user_id = '$userId'";
+					$result = $dbConn->query($sql);
+					
+					if($result);
+					//echo "Succeed for changing the book status\n";
+					else
+						echo "Fail for changing the book status\n".mysqli_error($dbConn)."\n";
+					
+					echo "Success\n";
+				}
+				
+			}
 			
-			echo "Success for changing the book status.\n";
 		} else //cannot find the book status
 			echo "Fail for changing the book status.\n";
 			
@@ -238,4 +261,60 @@
 		$originalStr = backToOriginalString($list);
 		return $originalStr;
 	}
+	
+	function confirmBookBorrow($data) {
+		$dbConn = createDbConnection();
+		$userId = $data->lender_user_id;
+		$borrowerUserId = $data->borrower_user_id;//need
+		$serverBookId = $data->book_id;//need
+		
+		$check = checkConfirmBookBorrowExist($dbConn, $userId, $serverBookId);
+		
+		if($check) {
+			$resultConfirmBookBorrow = array('result' => 'fail');
+		} else {// $check->result == 'false'
+			$sql = "INSERT INTO borrow_book_info VALUES('$userId', $serverBookId, '$borrowerUserId')";
+			$result = $dbConn->query($sql);
+			
+			$resultConfirmBookBorrow = array('result' => 'success');
+		}
+		return $resultConfirmBookBorrow;
+	}
+	
+	function checkConfirmBookBorrow($data) {
+		$dbConn = createDbConnection();
+		$userId = $data->lender_user_id;
+		//$borrowerUserId = $data->borrower_user_id;//need
+		$serverBookId = $data->book_id;//need
+		
+		$check = checkConfirmBookBorrowExist($dbConn, $userId, $serverBookId);
+		
+		if($check)
+			$resultCheckConfirmBookBorrow = array('result' => 'true');
+		else
+			$resultCheckConfirmBookBorrow = array('result' => 'false');
+		
+		return  $resultCheckConfirmBookBorrow;
+	}
+	
+	function deleteConfirmBookBorrow($data){
+		$dbConn = createDbConnection();
+		$userId = $data->lender_user_id;
+		$borrowerUserId = $data->borrower_user_id;//need
+		$serverBookId = $data->book_id;//need
+		
+		$check = checkConfirmBookBorrowExist($dbConn, $userId, $serverBookId);
+		
+		if($check){
+			$sql = "DELETE FROM borrow_book_info WHERE server_book_id = $serverBookId AND user_id = '$userId' AND borrower_user_id = '$borrowerUserId'";
+			$result = $dbConn->query($sql);
+			
+			$resultDeleteConfirmBookBorrow = array('result' => 'true');
+		}
+		else
+			$resultDeleteConfirmBookBorrow = array('result' => 'false');
+		
+		return $resultDeleteConfirmBookBorrow;
+	}
+	
 ?>
