@@ -69,6 +69,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     private SwipeRefreshLayout swipeLayout;
     private SimpleAdapter gridListAdapter;
     private GridView gridView;
+    private List<Map<String, Object>> items;
 
     private String[] imgText;
     private String[] imgAuthor;
@@ -115,10 +116,32 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         View rootView = inflater.inflate(R.layout.activity_book_grid_list, container, false);
 
 
+        gridView = (GridView)rootView.findViewById(R.id.main_page_gridview);
+
+        items = new ArrayList<Map<String,Object>>();
+
         new RefreshMyLibraryTask().execute();
 
+        gridListAdapter = new SimpleAdapter(getActivity(),
+                items, R.layout.grid_item, new String[]{"image", "text"},
+                new int[]{R.id.image, R.id.text});
 
-        gridView = (GridView)rootView.findViewById(R.id.main_page_gridview);
+        gridListAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Object data, String textRepresentation) {
+                if (view.getId() == R.id.image) {
+                    Picasso.with(view.getContext()).load(textRepresentation).error(R.drawable.no_cover).into((ImageView) view);
+                    return true;
+                }
+                return false;
+            }
+        });
+
+
+        gridView.setNumColumns(3);
+        gridView.setAdapter(gridListAdapter);
+
+
         gridView.setOnItemClickListener(this);
 
 
@@ -256,7 +279,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             ReadFromServer server = new ReadFromServer();
             // TODO change userID after register complete
             JSONObject receivedJson;
-            if(mtitle == getString(R.string.title_section3)) {
+            if(mtitle == getResources().getString(R.string.title_section3)) {
                 receivedJson = server.getBookListOfOneUser("useriduselessfornow");
             } else if(mtitle == getString(R.string.title_section2)) {
                 receivedJson = server.getBookListAll("useriduselessfornow");
@@ -292,10 +315,6 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             if(connectSuccess) {
 
                 displayDataOnGrid();
-                if(isAdded()) {
-                    Toast.makeText(getActivity(), "Refresh completed!", Toast.LENGTH_SHORT).show();
-                }
-                gridListAdapter.notifyDataSetChanged();
             } else {
                 Toast.makeText(getActivity(), "Connection failed! Please Try again.", Toast.LENGTH_SHORT).show();
             }
@@ -304,7 +323,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     }
 
     private void displayDataOnGrid() {
-        List<Map<String, Object>> items = new ArrayList<Map<String,Object>>();
+        items.clear();
         for (int i = 0; i < imgText.length; i++) {
             Map<String, Object> item = new HashMap<String, Object>();
             item.put("image", imgCover[i]);
@@ -312,27 +331,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             items.add(item);
         }
 
-        if(isAdded()) {
-            gridListAdapter = new SimpleAdapter(getActivity(),
-                    items, R.layout.grid_item, new String[]{"image", "text"},
-                    new int[]{R.id.image, R.id.text});
-
-            gridListAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-                @Override
-                public boolean setViewValue(View view, Object data, String textRepresentation) {
-                    if (view.getId() == R.id.image) {
-                        Picasso.with(view.getContext()).load(textRepresentation).error(R.drawable.no_cover).into((ImageView) view);
-                        // Todo change to link array's value, nolink value handling
-                        return true;
-                    }
-                    return false;
-                }
-            });
-
-
-            gridView.setNumColumns(3);
-            gridView.setAdapter(gridListAdapter);
-        }
+        gridListAdapter.notifyDataSetChanged();
     }
 
     private String[] receviedJsonTolocalArray(JSONObject receivedJson, String field) throws JSONException {

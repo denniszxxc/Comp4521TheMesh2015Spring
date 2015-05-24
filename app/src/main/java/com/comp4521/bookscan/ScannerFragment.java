@@ -150,6 +150,7 @@ public class ScannerFragment extends Fragment implements OnClickListener {
 			public void onClick(DialogInterface dialog, int id) {
 				Intent intent = new Intent(getActivity(), com.comp4521.bookscan.MainLayout.MainActivity.class); // the class may be different
 				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.putExtra("toFragment", "My Library" );
 				startActivity(intent);
 			}
 		});

@@ -208,6 +208,7 @@ public class BookListConfirmFragment extends ListFragment {
             public void onClick(DialogInterface dialog, int id) {
             	Intent intent = new Intent(getActivity(), com.comp4521.bookscan.MainLayout.MainActivity.class); // the class may be different
             	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				intent.putExtra("toFragment", "My Library");
             	startActivity(intent);
             }
         });
@@ -252,7 +253,9 @@ public class BookListConfirmFragment extends ListFragment {
     	//back to last activity
     	Intent intent = new Intent(getActivity(), com.comp4521.bookscan.MainLayout.MainActivity.class); // the class may be different
     	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-    	startActivity(intent);
+		intent.putExtra("toFragment", "My Library" );
+
+		startActivity(intent);
     }
     
     private void dataToSQLite(String time, String type) { // not yet finish
