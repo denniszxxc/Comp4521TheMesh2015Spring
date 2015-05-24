@@ -80,13 +80,9 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView;
-        //TODO fixed my library
-//        if (bookType == getString(R.string.title_section3)) {
-//            rootView = inflater.inflate(R.layout.fragment_my_book_detail, container, false);
-//        }else {
 
-            rootView = inflater.inflate(R.layout.activity_book_details, container, false);
-//        }
+          rootView = inflater.inflate(R.layout.activity_book_details, container, false);
+
 
         ImageView bookcoverView = (ImageView) rootView.findViewById(R.id.bookcover);
         TextView booknameView = (TextView) rootView.findViewById(R.id.bookname);
@@ -95,7 +91,7 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
         booknameView.setText("Book name: " + bookName);
         bookAuthorView.setText("Author: " + bookAuthor);
 
-        Picasso.with(container.getContext()).load(imageURL).into((ImageView) bookcoverView);
+        Picasso.with(container.getContext()).load(imageURL).error(R.drawable.no_cover).into((ImageView) bookcoverView);
 
 
         if (bookType == getString(R.string.title_section2)) {

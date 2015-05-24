@@ -18,7 +18,6 @@ public class ReadFromServer {
             toSend.put("target_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
 
         } catch (JSONException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         DataToServerFunction dataToServer = new DataToServerFunction(); // send json data to server though this class
