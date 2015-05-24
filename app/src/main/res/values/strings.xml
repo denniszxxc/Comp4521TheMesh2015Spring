@@ -42,4 +42,18 @@
 	<string name="title_activity_fullscreen_activity_chat">FullscreenActivityChat</string>
 	<string name="dummy_button">Dummy Button</string>
 	<string name="dummy_content">DUMMY\nCONTENT</string>
+
+	<!-- K-->
+	<string name="username_description">The username is used for your identification</string>
+	<string name="username">Username</string>
+	<string name="submit_username">Register</string>
+	<string name="error_register">There is an unknow error during registration</string>
+	<string name="error_duplicated_username">The username is used by other. Please enter a new one.</string>
+	<string name="error_play_service">There is some unsolvable error in play service. Please solve it before using our application</string>
+	<string name="error_send">There is an error caused unsuccessful sending</string>
+	<string name="action_close_app">Close Application</string>
+	<string name="action_delete_chat">Delete</string>
+	<string name="registering">Registering...</string>
+	<string name="removing">Removing...</string>
+
 </resources>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white" >
+    
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_contact_picture" />
+
+    <RelativeLayout
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"  
+        android:layout_width="wrap_content"      
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/avatar"
+        android:layout_centerVertical="true">
+	    <TextView 
+	        android:id="@+id/uid"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"	        
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	    
+	    <TextView 
+	        android:id="@+id/message_count"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_below="@id/uid"
+	        android:background="@android:color/darker_gray"
+	        android:padding="3dp"
+	        android:visibility="gone"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+	    
+	    <TextView 
+	        android:id="@+id/message_tag"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignTop="@id/message_count"
+	        android:layout_toRightOf="@id/message_count"
+	        android:visibility="gone"
+	        android:padding="3dp"
+	        android:textAppearance="?android:attr/textAppearanceSmall" />
+    </RelativeLayout>
+    
+
+</RelativeLayout>
+<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/chat_menu_list_item.xml -->
