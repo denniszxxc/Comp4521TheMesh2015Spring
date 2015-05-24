@@ -37,12 +37,25 @@
 		$phone = $data->phone;
 		$userSetting = $data->user_setting;
 		$tableName = UserInfo::$DATABASE_TABLE_NAME;
-		$sql = "INSERT INTO $tableName VALUES('$userId', '$phone', '$userSetting')";
+		
+		$sql = "SELECT user_id FROM $tableName WHERE user_id = '$userId'";
 		$result = $dbConn->query($sql);
-		if($result)
-			echo "Succeed for user register\n";
+		if($result);
+			//echo "Succeed for finding the book\n";
 		else
-			echo "Fail for user register\n".mysqli_error($dbConn)."\n";
+			echo "Fail for finding the book\n".mysqli_error($dbConn)."\n";
+		$mysqlNumRows = $result->num_rows;
+		
+		if($mysqlNumRows) {
+			echo "Succeed for user register\n";
+		} else {
+			$sql = "INSERT INTO $tableName VALUES('$userId', '$phone', '$userSetting')";
+			$result = $dbConn->query($sql);
+			if($result)
+				echo "Succeed for user register\n";
+			else
+				echo "Fail for user register\n".mysqli_error($dbConn)."\n";
+		}
 	}
 	
 	function deleteBook($data) {
@@ -185,20 +198,26 @@
 			
 			$i++;
 		}
-	
-		 $list = array('server_book_id' => $serverBookId,
-								'user_id' => $theUserId,
-							'num_of_book'=> $numOfBook,
-				'num_of_book_available' => $numOfBookAvailable,
-							'added_time' => $addedTime,
-							'offer_type' => $offerType,
-								'name' => $name,
-								'author' => $author,
-								'cover' => $cover,
-								'isbn' => $iSBN);
-				
-		$originalStr = backToOriginalString($list);
-		return $originalStr;
+		if($i != 0) {
+			 $list = array('server_book_id' => $serverBookId,
+									'user_id' => $theUserId,
+								'num_of_book'=> $numOfBook,
+					'num_of_book_available' => $numOfBookAvailable,
+								'added_time' => $addedTime,
+								'offer_type' => $offerType,
+									'name' => $name,
+									'author' => $author,
+									'cover' => $cover,
+									'isbn' => $iSBN);
+					
+			$originalStr = backToOriginalString($list);
+			return $originalStr;
+		} else {
+			$list = array();
+			//$originalStr = backToOriginalString($list);
+			$originalStr = json_encode($list, JSON_FORCE_OBJECT);
+			return $originalStr;
+		}
 	}
 	
 	function getAListOfUsers($data) {
@@ -219,7 +238,7 @@
 						'phone' => $phone,
 				 'user_setting' => $userSetting);
 				
-		return $list;
+		return $list = array();
 	}
 	
 	function getAListOfBookFromTheUser($data) {
@@ -246,20 +265,27 @@
 			
 			$i++;
 		}
+		if($i != 0) {
+			$list = array('server_book_id' => $serverBookId,
+									'user_id' => $theUserId,
+								'num_of_book'=> $numOfBook,
+					'num_of_book_available' => $numOfBookAvailable,
+								'added_time' => $addedTime,
+								'offer_type' => $offerType,
+									'name' => $name,
+									'author' => $author,
+									'cover' => $cover,
+									'isbn' => $iSBN);
+					
+			$originalStr = backToOriginalString($list);
+			return $originalStr;
+		} else {
+			$list = array();
+			//$originalStr = backToOriginalString($list);
+			$originalStr = json_encode($list, JSON_FORCE_OBJECT);
+			return $originalStr;
+		}
 		
-		$list = array('server_book_id' => $serverBookId,
-								'user_id' => $theUserId,
-							'num_of_book'=> $numOfBook,
-				'num_of_book_available' => $numOfBookAvailable,
-							'added_time' => $addedTime,
-							'offer_type' => $offerType,
-								'name' => $name,
-								'author' => $author,
-								'cover' => $cover,
-								'isbn' => $iSBN);
-				
-		$originalStr = backToOriginalString($list);
-		return $originalStr;
 	}
 	
 	function confirmBookBorrow($data) {
