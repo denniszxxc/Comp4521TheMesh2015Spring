@@ -53,5 +53,40 @@ public class WriteToServer {
         return dataToServer.sendDataToServer(toSend, true, true);
     }
 
+    public JSONObject deleteConfirmBookBorrow(String userID, String bookID) {
+        JSONObject toSend = new JSONObject();
+        try {
+            toSend.put("handle_method", "deleteConfirmBookBorrow"); // this is an important data to indicate what function will be called in server
+            toSend.put("lender_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("book_id", bookID);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        DataToServerFunction dataToServer = new DataToServerFunction(); // send json data to server though this class
+        return dataToServer.sendDataToServer(toSend, true, true);
+    }
+
+
+    public Boolean checkBookBorrow(String userID, String bookID ) {
+        JSONObject toSend = new JSONObject();
+        try {
+            toSend.put("handle_method", "CheckConfirmBookBorrow"); // this is an important data to indicate what function will be called in server
+            toSend.put("lender_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("book_id", bookID);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        DataToServerFunction dataToServer = new DataToServerFunction(); // send json data to server though this class
+        String result = new String();
+        try {
+            result =  dataToServer.sendDataToServer(toSend, true, true).getString("result");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return result.equals("true");
+    }
+
 
 }

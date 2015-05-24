@@ -117,6 +117,12 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
             bgdBookBtn.setBackgroundColor(Color.RED);
         }
 
+        if (bookName.contains("-- BORROWED --")) {
+            bgdBookBtn.setText("Cancel Borrowing");
+            bgdBookBtn.setBackgroundColor(Color.YELLOW);
+        }
+
+
         bgdBookBtn.setOnClickListener(this);
 
 
@@ -194,10 +200,15 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
             // TODO change userID after register complete
             JSONObject  receivedJson;
             if (bookType == getString(R.string.title_section3)) {
-                receivedJson = server.removeOneBook("useriduselessfornow", bookID);
-                connectSuccess = true;
+                if (bookName.contains("-- BORROWED --")) {
+                    receivedJson = server.deleteConfirmBookBorrow("useriduselessfornow", bookID);
+                    connectSuccess = true;
+                } else {
+                    receivedJson = server.removeOneBook("useriduselessfornow", bookID);
+                    connectSuccess = true;
+                }
 
-           } else if(bookType == getString(R.string.title_section1)) {
+            } else if(bookType == getString(R.string.title_section1)) {
                 receivedJson = server.borrowOneBook("useriduselessfornow", bookID, bookOwner);
                 receivedJson = server.borrowOneBookCall2("useriduselessfornow", bookID, bookOwner);
 
@@ -237,7 +248,6 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
 
             }
         }
-
 
     }
 

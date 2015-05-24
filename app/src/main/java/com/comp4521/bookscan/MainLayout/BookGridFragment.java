@@ -3,6 +3,7 @@ package com.comp4521.bookscan.MainLayout;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -78,6 +79,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     private String[] imgbookIDs;
     private String[] imgBookOwner;
     private String[] imgBookOfferType;
+    private Boolean[] imgBookborrowed;
 
     Parcelable state;
 
@@ -210,6 +212,13 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
                     Picasso.with(view.getContext()).load(textRepresentation).error(R.drawable.no_cover).into((ImageView) view);
                     return true;
                 }
+
+                if (view.getId() == R.id.text) {
+                    if(textRepresentation.contains("-- BORROWED --")){
+                        view.setBackgroundColor(Color.YELLOW);
+                        return false;
+                    }
+                }
                 return false;
             }
         });
@@ -324,6 +333,19 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             } else {
                 connectSuccess = false;
             }
+
+            //check book borrowed
+
+            imgBookborrowed = new Boolean[imgbookIDs.length];
+            WriteToServer wServer=  new WriteToServer();
+
+            for (int i = 0; i < imgbookIDs.length; i++) {
+                imgBookborrowed[i] = wServer.checkBookBorrow(imgBookOwner[i], imgbookIDs[i]);
+                if (imgBookborrowed[i]) {
+                    imgText[i] = "-- BORROWED -- " + imgText[i];
+                }
+            }
+
             return null;
         }
 

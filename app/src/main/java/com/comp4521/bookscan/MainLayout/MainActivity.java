@@ -119,7 +119,7 @@ public class MainActivity extends ActionBarActivity
                 (DrawerLayout) findViewById(R.id.drawer_layout));
 
         if (targetFragment != null && targetFragment.equals("My Library")) {
-            onNavigationDrawerItemSelected(2);
+            onNavigationDrawerItemSelected(1);
         }
     }
 
