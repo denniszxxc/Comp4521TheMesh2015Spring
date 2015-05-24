@@ -2,21 +2,24 @@ package hk.ust.comp4521.instant_messaging;
 
 import com.example.bookscan.R;
 import hk.ust.comp4521.storage_handle.DataProvider;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
-import android.app.LoaderManager;
-import android.content.CursorLoader;
-import android.content.Loader;
+
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.ListFragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 
-public class ChatMenuFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor>{
+public class ChatMenuFragment extends ListFragment implements LoaderManager.LoaderCallbacks<Cursor> {
 
 
 	@Override
@@ -88,7 +91,7 @@ public class ChatMenuFragment extends ListFragment implements LoaderManager.Load
 	
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
-		FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();		
+		FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
 		fragmentTransaction.replace(R.id.container, ChatFragment.newInstance(id));
 		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
@@ -99,9 +102,10 @@ public class ChatMenuFragment extends ListFragment implements LoaderManager.Load
 
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		CursorLoader loader = new CursorLoader(getActivity().getApplicationContext(), DataProvider.CONTENT_URI_USERS, new String[]{DataProvider.COL_ID, DataProvider.USERS_COL_UID, DataProvider.USERS_COL_COUNT}, null, null, DataProvider.USERS_COL_COUNT + " DESC, " + DataProvider.COL_ID + " DESC"); 
+		CursorLoader loader = new CursorLoader(getActivity().getApplicationContext(), DataProvider.CONTENT_URI_USERS, new String[]{DataProvider.COL_ID, DataProvider.USERS_COL_UID, DataProvider.USERS_COL_COUNT}, null, null, DataProvider.USERS_COL_COUNT + " DESC, " + DataProvider.COL_ID + " DESC");
 		return loader;
 	}
+
 
 	@Override
 	public void onLoadFinished(Loader<Cursor> loader, Cursor data) {

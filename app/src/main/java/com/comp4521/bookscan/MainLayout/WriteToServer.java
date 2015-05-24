@@ -89,6 +89,26 @@ public class WriteToServer {
         }
         return result.equals("true");
     }
+    public Boolean registerUser(String userID) {
+        JSONObject toSend = new JSONObject();
+        try {
+            toSend.put("handle_method", "UserRegister");
+            toSend.put("user_id", Common.getSelfUid());
+            toSend.put("phone_num", -1);
+            toSend.put("setting", "something");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        DataToServerFunction dataToServer = new DataToServerFunction(); // send json data to server though this class
+        String result = new String();
+        try {
+            result =  dataToServer.sendDataToServer(toSend, true, true).getString("result");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return result.equals("true");
+    }
 
 
 }

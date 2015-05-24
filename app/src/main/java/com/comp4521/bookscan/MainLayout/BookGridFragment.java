@@ -40,6 +40,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import hk.ust.comp4521.AddFriendProgressFragment;
+
 // import android.app.Fragment;
 
 
@@ -299,8 +301,6 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
 
         @Override
         protected Void doInBackground(Void... params) {
-
-
             String time = new Date().toString();
             ReadFromServer server = new ReadFromServer();
             // TODO change userID after register complete
@@ -335,14 +335,16 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             }
 
             //check book borrowed
+            if (imgbookIDs != null) {
 
-            imgBookborrowed = new Boolean[imgbookIDs.length];
-            WriteToServer wServer=  new WriteToServer();
+                imgBookborrowed = new Boolean[imgbookIDs.length];
+                WriteToServer wServer=  new WriteToServer();
 
-            for (int i = 0; i < imgbookIDs.length; i++) {
-                imgBookborrowed[i] = wServer.checkBookBorrow(imgBookOwner[i], imgbookIDs[i]);
-                if (imgBookborrowed[i]) {
-                    imgText[i] = "-- BORROWED -- " + imgText[i];
+                for (int i = 0; i < imgbookIDs.length; i++) {
+                    imgBookborrowed[i] = wServer.checkBookBorrow(imgBookOwner[i], imgbookIDs[i]);
+                    if (imgBookborrowed[i]) {
+                        imgText[i] = "-- BORROWED -- " + imgText[i];
+                    }
                 }
             }
 

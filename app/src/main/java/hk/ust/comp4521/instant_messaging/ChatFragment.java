@@ -22,17 +22,18 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.LoaderManager;
 import android.content.ContentResolver;
 import android.content.ContentValues;
-import android.content.CursorLoader;
-import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.CursorLoader;
+import android.support.v4.content.Loader;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -75,7 +76,7 @@ public class ChatFragment extends Fragment implements LoaderManager.LoaderCallba
 	private OnHandleMessageSendWithoutHostListener mSendedListener;
 	//private FragmentManager fm;
 	
-	private ChatFragment(){}
+//	private ChatFragment(){}
 	
 	public static ChatFragment newInstance(long id){
 		ChatFragment chatFragment = new ChatFragment();
@@ -97,8 +98,8 @@ public class ChatFragment extends Fragment implements LoaderManager.LoaderCallba
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		Activity mActivity = getActivity();
-		ActionBar mActionBar = mActivity.getActionBar();
+		ActionBarActivity mActivity = (ActionBarActivity) getActivity();
+		ActionBar mActionBar = mActivity.getSupportActionBar();
 		mActionBar.setDisplayHomeAsUpEnabled(true);
 		setHasOptionsMenu(true);
 		
@@ -232,7 +233,7 @@ public class ChatFragment extends Fragment implements LoaderManager.LoaderCallba
 		switch (item.getItemId()) {
 		case R.id.action_delete:
 			//getActivity().getContentResolver().delete(Uri.withAppendedPath(DataProvider.CONTENT_URI_USERS, targetDatabaseId), null, null);
-			RemoveFriendProgressFragment.newInsatnce(targetUid).show(getFragmentManager(), null);
+			RemoveFriendProgressFragment.newInsatnce(targetUid).show(getActivity().getSupportFragmentManager(), null);
 			//getFragmentManager().popBackStack();
 			//getActivity().getActionBar().setTitle("ChatRoom");
 			//return true;

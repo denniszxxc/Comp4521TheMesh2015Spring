@@ -43,7 +43,7 @@ public class OnHandleBulkMessageSendWithoutHostListener extends OnHandleResultWi
 
 		ContentValues values = new ContentValues(1);
 		values.put(DataProvider.MESSAGES_COL_SENDED, 1);
-		cr.update(DataProvider.CONTENT_URI_MESSAGES, values, DataProvider.COL_ID+" in ?", new String[]{inClause});
+		cr.update(DataProvider.CONTENT_URI_MESSAGES, values, DataProvider.COL_ID+"=?", new String[]{inClause});
 
 		
 	}

@@ -17,18 +17,18 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.bookscan.R;
 
-public class AddFriendProgressFragment extends DialogFragment{
+public class AddFriendProgressFragment extends DialogFragment {
 
 	public interface OnHandleAddedSuccessfullyListener{
 		public void onHandleAddedSuccessfully();
@@ -43,7 +43,7 @@ public class AddFriendProgressFragment extends DialogFragment{
 	
 	private OnHandleAddedSuccessfullyListener mListener;
 	
-	private AddFriendProgressFragment(){}
+	//private AddFriendProgressFragment(){}
 	
 	public static AddFriendProgressFragment newInsatnce(String targetUid){
 		AddFriendProgressFragment progressDialogFragment = new AddFriendProgressFragment();

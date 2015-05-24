@@ -112,13 +112,14 @@ public class BookListConfirmFragment extends ListFragment {
     		TextView emptyTxt = (TextView) rootView.findViewById(R.id.empty);
     		emptyTxt.setVisibility(View.GONE);  
     	}
-    	for(int i=0; i<bookResult.size(); i++) {
-    		String[] items = bookResult.get(i).split("@");
-    		list.add(items[0] + " / \n" + items[1]);
-    		items[2] = items[2].replace('&', '^'); // change some data's sign here
-    		bookResultJSON.put(items[0] +"@"+ items[1] +"@"+ items[2] +"@"+ items[3]);
-    	}
-    }
+
+		for(int i=0; i<bookResult.size(); i++) {
+			String[] items = bookResult.get(i).split("@");
+			list.add(items[0] + " / \n" + items[1]);
+//			items[2] = items[2].replace('&', '^'); // change some data's sign here
+//			bookResultJSON.put(items[0] +"@"+ items[1] +"@"+ items[2] +"@"+ items[3]);
+		}
+	}
     
     private void setAllListener() {
         btnfirm = (Button) rootView.findViewById(R.id.btnfirm);
@@ -143,9 +144,10 @@ public class BookListConfirmFragment extends ListFragment {
                     if(checkedItemPositions.get(i)){
                     	Log.i(TAG, "Selected item: " + Integer.toString(i));
                         adapter.remove(list.get(i));
-                        bookResult.remove(i);
-                        bookResultJSON.remove(i);
-                    }
+						bookResult.remove(i);
+						// Log.i("TEST JSON remove",String.valueOf(i) + "  \n result:" + bookResultJSON.toString()  + "\n Bookresult:" + bookResult.toString());
+						// bookResultJSON.remove(i);
+					}
                 }
                 checkedItemPositions.clear();
                 adapter.notifyDataSetChanged();
@@ -253,7 +255,7 @@ public class BookListConfirmFragment extends ListFragment {
     	//back to last activity
     	Intent intent = new Intent(getActivity(), com.comp4521.bookscan.MainLayout.MainActivity.class); // the class may be different
     	intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		intent.putExtra("toFragment", "My Library" );
+		intent.putExtra("toFragment", "My Library");
 
 		startActivity(intent);
     }
@@ -322,7 +324,14 @@ public class BookListConfirmFragment extends ListFragment {
 	}
     
     private JSONObject dataToServer(String time, String type) {
-    	BookInfoToServer bookInfoToServer = new BookInfoToServer();
+		for(int i=0; i<bookResult.size(); i++) {
+			String[] items = bookResult.get(i).split("@");
+//			list.add(items[0] + " / \n" + items[1]);
+			items[2] = items[2].replace('&', '^'); // change some data's sign here
+			bookResultJSON.put(items[0] +"@"+ items[1] +"@"+ items[2] +"@"+ items[3]);
+		}
+
+		BookInfoToServer bookInfoToServer = new BookInfoToServer();
     	JSONObject receivedJson = bookInfoToServer.callInBookListConfirmFragment(bookIds, bookResultJSON, time, type);
     	Log.i(TAG, "upload in server done!");
     	return receivedJson;

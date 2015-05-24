@@ -1,7 +1,8 @@
 package hk.ust.comp4521.instant_messaging.gcm;
 
 import hk.ust.comp4521.Common;
-import hk.ust.comp4521.MainActivity;
+//import hk.ust.comp4521.MainActivity;
+import com.comp4521.bookscan.MainLayout.MainActivity;
 import com.example.bookscan.R;
 import hk.ust.comp4521.instant_messaging.ChatMenuFragment;
 import hk.ust.comp4521.storage_handle.DataProvider;

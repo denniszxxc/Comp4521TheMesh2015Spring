@@ -17,18 +17,18 @@ import org.json.JSONObject;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.bookscan.R;
 
-public class RemoveFriendProgressFragment extends DialogFragment{
+public class RemoveFriendProgressFragment extends DialogFragment {
 
 	
 	//private static final String SELF_UID_TAG = "self_uid";
@@ -38,7 +38,7 @@ public class RemoveFriendProgressFragment extends DialogFragment{
 	private String removing_tag;
 	//private String waiting_network_tag;
 	
-	private RemoveFriendProgressFragment(){}
+	//private RemoveFriendProgressFragment(){}
 	
 	public static RemoveFriendProgressFragment newInsatnce(String targetUid){
 		RemoveFriendProgressFragment progressDialogFragment = new RemoveFriendProgressFragment();

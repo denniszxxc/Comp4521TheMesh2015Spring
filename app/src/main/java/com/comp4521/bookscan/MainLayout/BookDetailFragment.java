@@ -25,6 +25,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import hk.ust.comp4521.AddFriendProgressFragment;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -209,8 +211,11 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                 }
 
             } else if(bookType == getString(R.string.title_section1)) {
-                receivedJson = server.borrowOneBook("useriduselessfornow", bookID, bookOwner);
-                receivedJson = server.borrowOneBookCall2("useriduselessfornow", bookID, bookOwner);
+
+                AddFriendProgressFragment.newInsatnce("tim").show(getActivity().getSupportFragmentManager(), null);
+
+
+                receivedJson = borrowOneBook(server);
 
                 connectSuccess = false;
 
@@ -249,6 +254,13 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
             }
         }
 
+    }
+
+    private JSONObject borrowOneBook(WriteToServer server) {
+        JSONObject receivedJson;
+        receivedJson = server.borrowOneBook("useriduselessfornow", bookID, bookOwner);
+        receivedJson = server.borrowOneBookCall2("useriduselessfornow", bookID, bookOwner);
+        return receivedJson;
     }
 
     private void backtoMyLibrary() {

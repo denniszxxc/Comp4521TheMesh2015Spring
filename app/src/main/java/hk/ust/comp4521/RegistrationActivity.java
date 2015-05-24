@@ -30,6 +30,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.comp4521.bookscan.MainLayout.WriteToServer;
 import com.example.bookscan.R;
 
 public class RegistrationActivity extends Activity implements OnHandleResultListener{
@@ -149,6 +150,14 @@ public class RegistrationActivity extends Activity implements OnHandleResultList
 	
 	public void successfullyRegister(){
 		gcmUtils.successfullyRegistered();
+
+		new AsyncTask<Void, Void, Void>() {
+
+			protected Void doInBackground(Void... params) {
+				new WriteToServer().registerUser(currentUsername);
+				return null;
+			}
+		}.execute();
 		Intent intent = new Intent(this, com.comp4521.bookscan.MainLayout.MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		intent.putExtra(Intent_USERNAME, currentUsername);

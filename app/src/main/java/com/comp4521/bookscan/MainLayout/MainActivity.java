@@ -27,6 +27,7 @@ import hk.ust.comp4521.AddFriendProgressFragment;
 import hk.ust.comp4521.Common;
 import hk.ust.comp4521.RegistrationActivity;
 import hk.ust.comp4521.instant_messaging.ChatFragment;
+import hk.ust.comp4521.instant_messaging.ChatMenuFragment;
 import hk.ust.comp4521.instant_messaging.gcm.GCMUtils;
 import hk.ust.comp4521.instant_messaging.server_utils.NetworkReceiver;
 import hk.ust.comp4521.instant_messaging.server_utils.PostRequest;
@@ -121,6 +122,7 @@ public class MainActivity extends ActionBarActivity
         if (targetFragment != null && targetFragment.equals("My Library")) {
             onNavigationDrawerItemSelected(1);
         }
+
     }
 
 
@@ -200,6 +202,12 @@ public class MainActivity extends ActionBarActivity
                 fragmentManager.beginTransaction()
                         .replace(R.id.container, BookGridFragment.newInstance(getString(R.string.title_section3)))
                         .commit();
+                break;
+            case 2:
+                fragmentManager.beginTransaction()
+                        .replace(R.id.container, new ChatMenuFragment())
+                        .commit();
+
                 break;
             default:
                 fragmentManager.beginTransaction()
