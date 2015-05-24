@@ -1,0 +1,8 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="@drawable/chat_layout"
+    tools:context="hk.ust.cse.bookscan.bookscan.MainLayout.FullscreenActivityChat">
+
+
+</FrameLayout>
+<!-- From: file:/Users/dennisli/AndroidStudioProjects/BookSwap/app/src/main/res/layout/activity_fullscreen_activity_chat.xml -->
