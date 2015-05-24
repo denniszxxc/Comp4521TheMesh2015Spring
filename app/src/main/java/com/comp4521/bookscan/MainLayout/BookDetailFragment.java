@@ -4,9 +4,11 @@ package com.comp4521.bookscan.MainLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -136,14 +138,16 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
 
         if (v.getId() == R.id.borrow_get_del_book_btn) {
             if (bookType == getString(R.string.title_section1)) {
-                ((Button) v).setText("Waiting to confirm");
+//                ((Button) v).setText("Waiting to confirm");
+//
+//                Context context = this.getActivity();
+//                CharSequence text = "Request Sent. \n Waiting for owner's confirmation.";
+//                int duration = Toast.LENGTH_LONG;
+//
+//                Toast toast = Toast.makeText(context, text, duration);
+//                toast.show();
+                new ButtonPressTask().execute();
 
-                Context context = this.getActivity();
-                CharSequence text = "Request Sent. \n Waiting for owner's confirmation.";
-                int duration = Toast.LENGTH_LONG;
-
-                Toast toast = Toast.makeText(context, text, duration);
-                toast.show();
             }
 
             if (bookType == getString(R.string.title_section2)) {
@@ -193,29 +197,30 @@ public class BookDetailFragment extends Fragment implements View.OnClickListener
                 receivedJson = server.removeOneBook("useriduselessfornow", bookID);
                 connectSuccess = true;
 
-//            } else if(mtitle == getString(R.string.title_section2)) {
-//                receivedJson = server.getBookListAll("useriduselessfornow");
+           } else if(bookType == getString(R.string.title_section1)) {
+                receivedJson = server.borrowOneBook("useriduselessfornow", bookID, bookOwner);
+                receivedJson = server.borrowOneBookCall2("useriduselessfornow", bookID, bookOwner);
+
+                connectSuccess = false;
+
             } else {
                 receivedJson = null;
             }
 
-
             if (receivedJson != null) {
-//                try {
-//                    imgAuthor = receviedJsonTolocalArray(receivedJson,"author");
-//                    imgCover = receviedJsonTolocalArray(receivedJson,"cover");
-//                    imgbookIDs = receviedJsonTolocalArray(receivedJson,"server_book_id");
-//                    imgText = receviedJsonTolocalArray(receivedJson,"name");
-//                    imgBookOwner = receviedJsonTolocalArray(receivedJson,"user_id");
-//                    imgbookIDs = receviedJsonTolocalArray(receivedJson,"server_book_id");
-//
-//
-//                } catch (JSONException e) {
-//                    e.printStackTrace();
-//                }
-
+                if(bookType == getString(R.string.title_section1)) {
+                    try {
+                        if(receivedJson.getString("result").equals("success")) {
+                            connectSuccess = true;
+                            Log.i("BookDetailFragment","success borrow" );
+                        } else {
+                            connectSuccess =false;
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
                 connectSuccess = true;
-
             } else {
 //                connectSuccess = false;
             }
