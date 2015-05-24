@@ -7,6 +7,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import com.helper.datatoserver.DataToServerFunction;
 
+import hk.ust.comp4521.Common;
+
 /**
  * Created by dennisli on 24/5/15.
  */
@@ -15,7 +17,7 @@ public class ReadFromServer {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "GetAListOfBookFromTheUser"); // this is an important data to indicate what function will be called in server
-            toSend.put("target_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("target_user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -28,7 +30,7 @@ public class ReadFromServer {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "GetAListOfBooks"); // this is an important data to indicate what function will be called in server
-            toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block
@@ -42,7 +44,7 @@ public class ReadFromServer {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "GetAListOfBooks"); // this is an important data to indicate what function will be called in server
-            toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block

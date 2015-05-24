@@ -8,12 +8,14 @@ import com.helper.datatoserver.DataToServerFunction;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import hk.ust.comp4521.Common;
+
 public class WriteToServer {
     public JSONObject removeOneBook(String userID, String bookID) {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "DeleteBook"); // this is an important data to indicate what function will be called in server
-            toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
             toSend.put("book_id", bookID);
 
         } catch (JSONException e) {
@@ -27,7 +29,7 @@ public class WriteToServer {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "confirmBookBorrow"); // this is an important data to indicate what function will be called in server
-            toSend.put("borrower_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("borrower_user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
             toSend.put("lender_user_id", lendeID);
             toSend.put("book_id", bookID);
 
@@ -57,7 +59,7 @@ public class WriteToServer {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "deleteConfirmBookBorrow"); // this is an important data to indicate what function will be called in server
-            toSend.put("lender_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("lender_user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
             toSend.put("book_id", bookID);
 
         } catch (JSONException e) {
@@ -72,7 +74,7 @@ public class WriteToServer {
         JSONObject toSend = new JSONObject();
         try {
             toSend.put("handle_method", "CheckConfirmBookBorrow"); // this is an important data to indicate what function will be called in server
-            toSend.put("lender_user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+            toSend.put("lender_user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
             toSend.put("book_id", bookID);
 
         } catch (JSONException e) {

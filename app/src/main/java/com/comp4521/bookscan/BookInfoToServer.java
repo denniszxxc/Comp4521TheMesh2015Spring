@@ -6,12 +6,14 @@ import org.json.JSONObject;
 
 import com.helper.datatoserver.DataToServerFunction;
 
+import hk.ust.comp4521.Common;
+
 public class BookInfoToServer {
 	public JSONObject callInBookListConfirmFragment(JSONArray bookIds, JSONArray bookResultJSON, String time, String type) {
 		JSONObject toSend = new JSONObject();
 		try {
 			toSend.put("handle_method", "BookListConfirm"); // this is an important data to indicate what function will be called in server
-			toSend.put("user_id", "C0mPC0mPC0mPC0mP"); // TODO: need to be changed, to get this infomation from shared Preference
+			toSend.put("user_id", Common.getSelfUid()); // TODO: need to be changed, to get this infomation from shared Preference
 			toSend.put("book_data", bookResultJSON);
 			toSend.put("added_time", time);
 			toSend.put("offer_type", type);
