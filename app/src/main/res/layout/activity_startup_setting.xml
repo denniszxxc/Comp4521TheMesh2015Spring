@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+	
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"       
+        android:orientation="vertical" >
+	    
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textSize="35sp"	        
+	        android:paddingLeft="10dp"
+	        android:textColor="#00BFFF"
+	        android:text="@string/app_name" />
+	    
+	    
+		<ProgressBar
+			android:id="@+id/progressing"
+	        android:layout_alignParentBottom="true"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+		    android:layout_marginBottom="20dp"
+	        style="?android:attr/progressBarStyleHorizontal"
+	        android:progress="0"
+	        android:indeterminate="false"/>
+	    
+	    <LinearLayout
+	        android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	        android:layout_marginLeft="8dp"
+		    android:layout_marginRight="8dp"
+		    android:orientation="vertical" >
+		    <TextView
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textColor="@android:color/white"
+		        android:textSize="20sp"
+		        android:layout_marginBottom="20dp"
+		        android:text="@string/username_description" />
+		    
+		    <TextView
+		        android:id="@+id/error_description"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textColor="#FF0000"
+		        android:visibility="gone" />
+		    
+		    <EditText 
+		        android:id="@+id/username_field"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:textSize="20sp"
+		        android:inputType="text"
+		        android:hint="@string/username"
+		        android:imeOptions="actionSend"/>
+	    </LinearLayout>
+	    
+	</LinearLayout>
+    
+    <LinearLayout
+        android:id="@+id/start_area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_alignParentBottom="true" >
+        
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    
+		<View
+		    android:layout_width="2dp"
+		    android:layout_height="match_parent"
+		    android:background="#BEBEBE" />
+		
+		<Button
+		    android:id="@+id/start_button"
+        	android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/button_change"
+            android:textColor="#BEBEBE"
+            android:textStyle="bold"
+        	android:text="@string/submit_username"
+        	android:textSize="25sp"
+        	android:clickable="false"
+        	android:onClick="register" />
+        
+    </LinearLayout>
+    
+    <View
+	    android:layout_width="match_parent"
+	    android:layout_height="2dp"
+	    android:background="#BEBEBE"
+	    android:layout_above="@id/start_area" />
+    
+    
+</RelativeLayout>
