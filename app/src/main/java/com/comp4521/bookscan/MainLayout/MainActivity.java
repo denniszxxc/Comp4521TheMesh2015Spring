@@ -50,14 +50,12 @@ public class MainActivity extends ActionBarActivity
         mNavigationDrawerFragment.setUp(
                 R.id.navigation_drawer,
                 (DrawerLayout) findViewById(R.id.drawer_layout));
-    }
 
-    protected void onStart(){
-        super.onStart();
         if (targetFragment != null && targetFragment.equals("My Library")) {
             onNavigationDrawerItemSelected(2);
         }
     }
+
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {

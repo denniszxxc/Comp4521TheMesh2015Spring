@@ -118,24 +118,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
 
         gridView = (GridView)rootView.findViewById(R.id.main_page_gridview);
 
-        items = new ArrayList<Map<String,Object>>();
 
-        new RefreshMyLibraryTask().execute();
-
-        gridListAdapter = new SimpleAdapter(getActivity(),
-                items, R.layout.grid_item, new String[]{"image", "text"},
-                new int[]{R.id.image, R.id.text});
-
-        gridListAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
-            @Override
-            public boolean setViewValue(View view, Object data, String textRepresentation) {
-                if (view.getId() == R.id.image) {
-                    Picasso.with(view.getContext()).load(textRepresentation).error(R.drawable.no_cover).into((ImageView) view);
-                    return true;
-                }
-                return false;
-            }
-        });
 
 
         gridView.setNumColumns(3);
@@ -197,6 +180,25 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+
+        items = new ArrayList<Map<String,Object>>();
+
+        new RefreshMyLibraryTask().execute();
+
+        gridListAdapter = new SimpleAdapter(getActivity(),
+                items, R.layout.grid_item, new String[]{"image", "text"},
+                new int[]{R.id.image, R.id.text});
+
+        gridListAdapter.setViewBinder(new SimpleAdapter.ViewBinder() {
+            @Override
+            public boolean setViewValue(View view, Object data, String textRepresentation) {
+                if (view.getId() == R.id.image) {
+                    Picasso.with(view.getContext()).load(textRepresentation).error(R.drawable.no_cover).into((ImageView) view);
+                    return true;
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -274,6 +276,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
 
         @Override
         protected Void doInBackground(Void... params) {
+
 
             String time = new Date().toString();
             ReadFromServer server = new ReadFromServer();
