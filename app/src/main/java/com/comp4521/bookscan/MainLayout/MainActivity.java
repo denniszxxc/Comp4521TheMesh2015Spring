@@ -2,6 +2,7 @@ package com.comp4521.bookscan.MainLayout;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,10 +18,27 @@ import android.view.ViewGroup;
 
 import com.example.bookscan.R;
 
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import hk.ust.comp4521.AddFriendProgressFragment;
+import hk.ust.comp4521.Common;
+import hk.ust.comp4521.RegistrationActivity;
+import hk.ust.comp4521.instant_messaging.ChatFragment;
+import hk.ust.comp4521.instant_messaging.gcm.GCMUtils;
+import hk.ust.comp4521.instant_messaging.server_utils.NetworkReceiver;
+import hk.ust.comp4521.instant_messaging.server_utils.PostRequest;
+import hk.ust.comp4521.instant_messaging.server_utils.RequestTaskManager;
+import hk.ust.comp4521.instant_messaging.server_utils.ServerUtils;
+import hk.ust.comp4521.storage_handle.CustomAsyncQueryHandler;
+import hk.ust.comp4521.storage_handle.DataProvider;
+
 
 public class MainActivity extends ActionBarActivity
         implements NavigationDrawerFragment.NavigationDrawerCallbacks,
-        BookGridFragment.OnFragmentInteractionListener {
+        BookGridFragment.OnFragmentInteractionListener, GCMUtils.OnHandleResultListener, ChatFragment.OnGetSelfUidListener {
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -33,10 +51,59 @@ public class MainActivity extends ActionBarActivity
     private CharSequence mTitle;
     private String targetFragment;
 
+    private GCMUtils gcmUtils;
+    private String selfUsername;
+    private CustomAsyncQueryHandler customAsyncQueryHandler;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        NetworkReceiver networkReceiver = NetworkReceiver.getInstance();
+        // handle request
+        networkReceiver.setNetworkTask(new NetworkReceiver.NetworkTask() {
+
+            private RequestTaskManager requestTaskManager;
+
+            // Runs before the constructor each time you instantiate an object
+            {
+                requestTaskManager = RequestTaskManager.getInstance();
+            }
+
+            @Override
+            public boolean hasTask() {
+                return requestTaskManager.hasPendingTask();
+            }
+
+            @Override
+            public void executeTask() {
+                requestTaskManager.resumeTaskFromPending();
+            }
+
+            @Override
+            public void executeOfflineTask() {
+            }
+
+        });
+
+        //customAsyncQueryHandler.startQuery(DataProvider.CONTENT_URI_MESSAGES, new String[]{DataProvider.MESSAGES_COL_MSG, DataProvider.MESSAGES_COL_FROM, DataProvider.MESSAGES_COL_TO, DataProvider.MESSAGES_COL_AT}, DataProvider.MESSAGES_COL_SENDED+"=?", new String[]{"0"}, null);
+
+
+        selfUsername = getIntent().getStringExtra(RegistrationActivity.Intent_USERNAME);
+        if(selfUsername == null){
+            selfUsername = Common.getSelfUid();
+            gcmUtils = new GCMUtils(this);
+            gcmUtils.checkPlayServices();
+            gcmUtils.register();
+            customAsyncQueryHandler = new CustomAsyncQueryHandler(getApplicationContext());
+            customAsyncQueryHandler.startQuery(DataProvider.CONTENT_URI_MESSAGES, new String[]{DataProvider.COL_ID, DataProvider.MESSAGES_COL_MSG, DataProvider.MESSAGES_COL_TO}, DataProvider.MESSAGES_COL_SENDED+"=?", new String[]{"0"}, null);
+        }
+        else
+            Common.saveSelfUid(selfUsername);
+
+
 
         if( getIntent()!=null) {
             targetFragment = getIntent().getStringExtra("toFragment");
@@ -56,6 +123,62 @@ public class MainActivity extends ActionBarActivity
         }
     }
 
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Common.setIsInForeground(true);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Common.setIsInForeground(false);
+    }
+
+    @Override
+    public void onSuccess(final String regId) {
+        new AsyncTask<Void,Void,Integer>(){
+
+            private final int SUCCESS = 0;
+            private final int UNKNOW_ERROR = 1;
+
+            @Override
+            protected Integer doInBackground(Void... params) {
+
+                try {
+                    Map<String,String[]> postParams = new HashMap<String,String[]>();
+                    postParams.put("username",new String[]{selfUsername});
+                    postParams.put("regId",new String[]{regId});
+                    String response = new PostRequest(ServerUtils.SERVER_URL+"/updateRegistration.php",postParams).request();
+                    JSONObject reader = new JSONObject(response);
+                    if(reader.getBoolean("success"))
+                        return SUCCESS;
+
+                }
+                catch (Exception e) {}
+                return UNKNOW_ERROR;
+            }
+
+            @Override
+            protected void onPostExecute(Integer result) {
+                switch(result){
+                    case SUCCESS:
+                        gcmUtils.successfullyRegistered();
+                        break;
+                }
+            }
+
+        }.execute(new Void[]{});
+
+    }
+
+    @Override
+    public void onError() {}
+
+    @Override
+    public String onGetSelfUid() {
+        return selfUsername;
+    }
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
@@ -143,6 +266,8 @@ public class MainActivity extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -202,5 +327,7 @@ public class MainActivity extends ActionBarActivity
 
         }
     }
+
+
 
 }

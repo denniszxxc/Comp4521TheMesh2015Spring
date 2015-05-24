@@ -149,7 +149,7 @@ public class RegistrationActivity extends Activity implements OnHandleResultList
 	
 	public void successfullyRegister(){
 		gcmUtils.successfullyRegistered();
-		Intent intent = new Intent(this,MainActivity.class);
+		Intent intent = new Intent(this, com.comp4521.bookscan.MainLayout.MainActivity.class);
 		intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 		intent.putExtra(Intent_USERNAME, currentUsername);
 		startActivity(intent);	
