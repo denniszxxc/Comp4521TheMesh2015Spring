@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -74,6 +75,8 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     private String[] imgCover;
     private String[] imgbookIDs;
 
+    Parcelable state;
+
 
     /**
      * Use this factory method to create a new instance of
@@ -112,17 +115,7 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         View rootView = inflater.inflate(R.layout.activity_book_grid_list, container, false);
 
 
-
-        if(lastRefreshTime == null && isAdded()) {
-            new RefreshMyLibraryTask().execute();
-            lastRefreshTime = new Date();
-        } else if( (new Date()).getTime() - lastRefreshTime.getTime() < 2000 ) {
-            displayDataOnGrid();
-        }
-//        } else {
-//            new RefreshMyLibraryTask().execute();
-//            lastRefreshTime = new Date();
-//        }
+        new RefreshMyLibraryTask().execute();
 
 
         gridView = (GridView)rootView.findViewById(R.id.main_page_gridview);
@@ -149,6 +142,10 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
         }
 
 
+        if(state != null) {
+            Log.d(TAG, "trying to restore listview state..");
+            gridView.onRestoreInstanceState(state);
+        }
 
         return rootView;
     }
@@ -183,6 +180,14 @@ public class BookGridFragment extends Fragment implements AdapterView.OnItemClic
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onPause() {
+        // Save ListView state @ onPause
+        Log.d(TAG, "saving listview state @ onPause");
+        state = gridView.onSaveInstanceState();
+        super.onPause();
     }
 
     /**
