@@ -1,5 +1,4 @@
 <?php
-	header('Content-Type: text/html; charset=utf-8');
 	include_once('mySQLDbSchema.php');
 ?>
 <?php
@@ -149,5 +148,4 @@
 		else
 			echo "Fail for $tableName<br>".mysqli_error($dbConn)."<br>";
 	}
-	
 ?>

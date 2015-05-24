@@ -1,5 +1,4 @@
 <?php
-	header('Content-Type: text/html; charset=utf-8');
 	include_once('coreFunctionPage.php');
 	include_once('subFunctionPage.php');	
 ?>

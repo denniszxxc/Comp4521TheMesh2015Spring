@@ -1,5 +1,4 @@
 <?php
-	header('Content-Type: text/html; charset=utf-8');
 	include_once('coreFunctionPage.php');
 	include_once('functionPage.php');
 ?>
@@ -10,7 +9,6 @@
 		$data = json_decode($newStr);
 		$serverBookId;
 		
-		echo utf8_encode($_POST["json"])."\n";
 		if($data->handle_method == "BookListConfirm") {
 			$serverBookId = bookListConfirm($data);
 			$jsonBookIds = json_encode(array('book_ids' => $serverBookId));

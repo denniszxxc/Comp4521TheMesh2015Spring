@@ -1,5 +1,4 @@
 <?php
-//class BookInfoToMySQLContract {
 	class BookInfo {
 		public static $DATABASE_TABLE_NAME = "book_info";
 		public static $COLUMN_SERVER_BOOK_ID = "server_book_id"; 
@@ -32,5 +31,4 @@
 		public static $COLUMN_SERVER_BOOK_ID = "server_book_id";
 		public static $COLUMN_BORROWER_USER_ID = "borrower_user_id";
 	}
-//}
 ?>
