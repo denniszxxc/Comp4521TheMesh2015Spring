@@ -24,6 +24,8 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.bookscan.R;
+
 public class MainActivity extends Activity implements OnHandleResultListener, OnGetSelfUidListener{
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

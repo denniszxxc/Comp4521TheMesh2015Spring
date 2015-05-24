@@ -1,7 +1,8 @@
 package hk.ust.comp4521.instant_messaging;
 
 import hk.ust.comp4521.AddFriendProgressFragment;
-import hk.ust.comp4521.R;
+import com.example.bookscan.R;
+
 import hk.ust.comp4521.RemoveFriendProgressFragment;
 import hk.ust.comp4521.instant_messaging.custom_request.OnHandleBulkMessageSendWithoutHostListener;
 import hk.ust.comp4521.instant_messaging.custom_request.OnHandleMessageSendWithoutHostListener;

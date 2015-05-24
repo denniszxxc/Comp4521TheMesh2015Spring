@@ -30,6 +30,8 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.bookscan.R;
+
 public class RegistrationActivity extends Activity implements OnHandleResultListener{
 	private Button startButton;
 	private EditText usernameEditText;

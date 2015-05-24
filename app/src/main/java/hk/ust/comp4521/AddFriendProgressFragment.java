@@ -26,6 +26,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.bookscan.R;
+
 public class AddFriendProgressFragment extends DialogFragment{
 
 	public interface OnHandleAddedSuccessfullyListener{

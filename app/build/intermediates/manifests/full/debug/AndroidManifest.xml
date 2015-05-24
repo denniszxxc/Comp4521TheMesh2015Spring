@@ -19,13 +19,23 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <permission
+        android:name="hk.ust.comp4521.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="hk.ust.comp4521.permission.C2D_MESSAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="hk.ust.comp4521.Common"
         android:allowBackup="true"
         android:icon="@drawable/book_image"
         android:label="@string/app_name"
         android:theme="@style/CustomActionBarTheme" >
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -39,17 +49,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name="hk.ust.comp4521.RegistrationActivity"
-            android:windowSoftInputMode="stateVisible|adjustResize"
-            android:theme="@android:style/Theme.Holo.NoActionBar"/>
+            android:theme="@android:style/Theme.Holo.NoActionBar"
+            android:windowSoftInputMode="stateVisible|adjustResize" />
 
         <receiver
             android:name="hk.ust.comp4521.instant_messaging.gcm.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="hk.ust.comp4521" />
             </intent-filter>
         </receiver>
@@ -59,7 +69,6 @@
             android:authorities="hk.ust.comp4521.provider"
             android:exported="false" >
         </provider>
-
 
         <activity
             android:name="com.comp4521.bookscan.MainActivity"
@@ -72,7 +81,6 @@
         <activity
             android:name="com.comp4521.bookscan.MainLayout.MainActivity"
             android:label="@string/title_activity_main" >
-
         </activity>
         <activity
             android:name="com.comp4521.bookscan.MainLayout.FullscreenActivityChat"

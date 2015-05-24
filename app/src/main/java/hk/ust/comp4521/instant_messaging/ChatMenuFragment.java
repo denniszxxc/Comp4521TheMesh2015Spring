@@ -1,6 +1,6 @@
 package hk.ust.comp4521.instant_messaging;
 
-import hk.ust.comp4521.R;
+import com.example.bookscan.R;
 import hk.ust.comp4521.storage_handle.DataProvider;
 import android.app.FragmentTransaction;
 import android.app.ListFragment;
@@ -89,7 +89,7 @@ public class ChatMenuFragment extends ListFragment implements LoaderManager.Load
 	@Override
 	public void onListItemClick(ListView l, View v, int position, long id) {
 		FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();		
-		fragmentTransaction.replace(R.id.content_frame, ChatFragment.newInstance(id));
+		fragmentTransaction.replace(R.id.container, ChatFragment.newInstance(id));
 		fragmentTransaction.addToBackStack(null);
 		fragmentTransaction.commit();
 	}
