@@ -2,19 +2,17 @@
 	include_once('coreFunctionPage.php');
 	include_once('functionPage.php');
 ?>
-<?php
+<?php 
     checkCreatedTable();
 	if(isset($_POST["json"])) {
 		$newStr = specialCharacterHandler($_POST["json"]); // handle the special characters of the JSON string
 		$data = json_decode($newStr);
 		$serverBookId;
-		
+
 		if($data->handle_method == "BookListConfirm") {
 			$serverBookId = bookListConfirm($data);
 			$jsonBookIds = json_encode(array('book_ids' => $serverBookId));
 			echo $jsonBookIds."\n";
-			//$originalStr = backToOriginalString($data); // change to original sign of the string 
-			//echo $originalStr;
 		} else if($data->handle_method == "UserRegister") 
 			userRegister($data);
 		else if($data->handle_method == "DeleteBook")
@@ -47,7 +45,6 @@
 			echo $jsonResult;
 		} else
 			echo "Error!.\n";
-
 	} else {
 		echo "Fail!\n";
 	}

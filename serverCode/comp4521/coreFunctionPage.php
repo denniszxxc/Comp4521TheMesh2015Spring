@@ -5,9 +5,10 @@
 	function createDbConnection() { // create a database connection
 		$servername = "localhost";
 		$username = "root";
-		$password = "";//can be changed
+		$password = "93285812";//can be changed
 		$dbname = "library";
 		$dBconn = new mysqli($servername, $username, $password, $dbname); // Create connection
+		mysqli_set_charset($dBconn, "utf8");
 		if ($dBconn->connect_error) // Check connection
 			die("Connection failed: " . $dBconn->connect_error);
 		return $dBconn;
@@ -29,9 +30,9 @@
 	}
 	
 	function checkCreatedTable() {
-		$link = mysql_connect('localhost', 'root', '');
+		$link = mysql_connect('localhost', 'root', '93285812');
 		$databaseName = "library";
-		$sql = "CREATE DATABASE IF NOT EXISTS $databaseName";
+		$sql = "CREATE DATABASE IF NOT EXISTS $databaseName CHARACTER SET utf8 COLLATE utf8_general_ci";
 		$result = mysql_query($sql, $link);
 		if($result);
 			//echo "Succeed for createTable<br>";

@@ -17,6 +17,7 @@
 			$author[$i] = $component[1];
 			$cover[$i] = $component[2];
 			$iSBN[$i] = $component[3];
+			
 			if(!checkBookInfoRecord($dbConn, $iSBN[$i])) {
 				$serverBookId[$i] = insertBookInfo($dbConn, $name[$i], $author[$i], $cover[$i], $iSBN[$i]);
 				$serverBookId[$i] = insertOwnerBookInfo($dbConn, $serverBookId[$i], $userId, $addedTime, $offerType);
@@ -75,17 +76,13 @@
 		if($mysqlNumRows) {
 			$sql = "DELETE FROM $tableName WHERE server_book_id = $serverBookId AND user_id = '$userId'";
 			$result = $dbConn->query($sql);
-			
 			if($result);
 			//echo "Succeed for deleting the book\n";
 			else
 				echo "Fail for deleting the book\n".mysqli_error($dbConn)."\n";
-			
 			echo "Success for deleting the book.\n";
-			
 		} else //cannot find the book
 			echo "Fail for deleting the book.\n";
-		
 	}
 	
 	function changeUsername($data) {
@@ -114,11 +111,9 @@
 				//echo "Succeed for changing the user ID\n";
 				else
 					echo "Fail for changing the user ID\n".mysqli_error($dbConn)."\n";
-				
 				echo "Success for changing the user ID.\n";
 			} else 
 				echo "The user ID exists already.\n";
-			
 		} else //cannot find the user ID
 			echo "Fail for changing the username.\n";
 		
@@ -198,6 +193,7 @@
 			
 			$i++;
 		}
+		
 		if($i != 0) {
 			 $list = array('server_book_id' => $serverBookId,
 									'user_id' => $theUserId,
