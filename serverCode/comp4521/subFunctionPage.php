@@ -99,8 +99,8 @@
 	}
 	
 	function changeBookStatusGetBack($dbConn, $userId, $serverBookId) {
-		$userId = $data->lender_user_id;//need
-		$serverBookId = $data->book_id;//need
+		//$userId = $data->lender_user_id;//need
+		//$serverBookId = $data->book_id;//need
 		$tableName = OwnerBookInfo::$DATABASE_TABLE_NAME;
 		//$targetStatus = 1;
 		
