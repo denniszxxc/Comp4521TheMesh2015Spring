@@ -145,8 +145,7 @@
 					echo "Fail for changing the book status\n".mysqli_error($dbConn)."\n";
 				
 				echo "Success\n";
-			}
-			else {// $targetStatus == 0
+			} else {// $targetStatus == 0
 				$sql = "SELECT num_of_book_available FROM $tableName WHERE server_book_id = $serverBookId AND user_id = '$userId'";
 				$result = $dbConn->query($sql);
 				$row = $result->fetch_assoc();
@@ -322,18 +321,20 @@
 	function deleteConfirmBookBorrow($data){
 		$dbConn = createDbConnection();
 		$userId = $data->lender_user_id;
-		$borrowerUserId = $data->borrower_user_id;//need
+		//$borrowerUserId = $data->borrower_user_id;//need
 		$serverBookId = $data->book_id;//need
 		
 		$check = checkConfirmBookBorrowExist($dbConn, $userId, $serverBookId);
 		
 		if($check){
-			$sql = "DELETE FROM borrow_book_info WHERE server_book_id = $serverBookId AND user_id = '$userId' AND borrower_user_id = '$borrowerUserId'";
+			//$sql = "DELETE FROM borrow_book_info WHERE server_book_id = $serverBookId AND user_id = '$userId' AND borrower_user_id = '$borrowerUserId'";
+			$sql = "DELETE FROM borrow_book_info WHERE server_book_id = $serverBookId AND user_id = '$userId'";
 			$result = $dbConn->query($sql);
 			
+			changeBookStatusGetBack($dbConn, $userId, $serverBookId);
+			
 			$resultDeleteConfirmBookBorrow = array('result' => 'true');
-		}
-		else
+		} else
 			$resultDeleteConfirmBookBorrow = array('result' => 'false');
 		
 		return $resultDeleteConfirmBookBorrow;

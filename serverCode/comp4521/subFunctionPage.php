@@ -98,4 +98,22 @@
 			return 0;
 	}
 	
+	function changeBookStatusGetBack($dbConn, $userId, $serverBookId) {
+		$userId = $data->lender_user_id;//need
+		$serverBookId = $data->book_id;//need
+		$tableName = OwnerBookInfo::$DATABASE_TABLE_NAME;
+		//$targetStatus = 1;
+		
+		$sql = "UPDATE $tableName SET num_of_book_available = num_of_book_available + 1 WHERE server_book_id = $serverBookId AND user_id = '$userId'";
+		$result = $dbConn->query($sql);
+	
+		if($result);
+		//echo "Succeed for changing the book status\n";
+		else
+			echo "Fail for changing the book status\n".mysqli_error($dbConn)."\n";
+		
+		//echo "Success\n";
+		
+	}
+	
 ?>

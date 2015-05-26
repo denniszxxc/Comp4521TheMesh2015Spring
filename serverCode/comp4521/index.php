@@ -31,7 +31,7 @@
 		} else if($data->handle_method == "GetAListOfBookFromTheUser") {
 			$jsonList = getAListOfBookFromTheUser($data);
 			echo $jsonList."\n";
-		}else if($data->handle_method == "ConfirmBookBorrow") {
+		}else if($data->handle_method == "confirmBookBorrow") {
 			$result = confirmBookBorrow($data);
 			$jsonResult = json_encode($result);
 			echo $jsonResult;
@@ -39,7 +39,7 @@
 			$result = checkConfirmBookBorrow($data);
 			$jsonResult = json_encode($result);
 			echo $jsonResult;
-		} else if($data->handle_method == "DeleteConfirmBookBorrow") {
+		} else if($data->handle_method == "deleteConfirmBookBorrow") {
 			$result = deleteConfirmBookBorrow($data);
 			$jsonResult = json_encode($result);
 			echo $jsonResult;

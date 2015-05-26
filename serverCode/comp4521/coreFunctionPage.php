@@ -5,7 +5,7 @@
 	function createDbConnection() { // create a database connection
 		$servername = "localhost";
 		$username = "root";
-		$password = "93285812";//can be changed
+		$password = "";//can be changed
 		$dbname = "library";
 		$dBconn = new mysqli($servername, $username, $password, $dbname); // Create connection
 		mysqli_set_charset($dBconn, "utf8");
@@ -30,7 +30,7 @@
 	}
 	
 	function checkCreatedTable() {
-		$link = mysql_connect('localhost', 'root', '93285812');
+		$link = mysql_connect('localhost', 'root', '');
 		$databaseName = "library";
 		$sql = "CREATE DATABASE IF NOT EXISTS $databaseName CHARACTER SET utf8 COLLATE utf8_general_ci";
 		$result = mysql_query($sql, $link);
